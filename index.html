@@ -8,16 +8,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body { font-family: 'Poppins', sans-serif; }
-        .juice-card, .prep-option, .sweet-option, .size-option, .delivery-option, .payment-option, .extra-item {
-            transition: all 0.3s ease;
-        }
-        .juice-card:hover, .prep-option:hover, .sweet-option:hover, .size-option:hover, .delivery-option:hover, .payment-option:hover, .extra-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .selected {
-            border: 4px solid #059669 !important;
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5) !important;
+        .juice-card { transition: all 0.3s ease; }
+        .juice-card:hover { transform: translateY(-5px); }
+        .selected { 
+            border: 4px solid #059669 !important; 
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5) !important; 
             box-shadow: 0 0 0 2px #10b981, 0 4px 12px rgba(16, 185, 129, 0.3) !important;
             transform: scale(1.02) !important;
         }
@@ -30,7 +25,7 @@
 </head>
 <body class="bg-gradient-to-br from-green-50 to-orange-50 min-h-screen">
     <!-- Header -->
-    <div class="bg-gradient-to-r from-green-500 to-orange-500 text-white p-4 text-center sticky top-0 z-10 shadow-lg">
+    <div class="bg-gradient-to-r from-green-500 to-orange-500 text-white p-4 text-center">
         <h1 class="text-3xl font-bold mb-1">🍹 FruitBox</h1>
         <p class="text-sm italic mt-1">Tu jugo, tu estilo, tu fruitbox!</p>
         
@@ -44,7 +39,7 @@
             </a>
             <a href="https://www.instagram.com/fruitbox_mxl/" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-3 py-2 rounded-full text-xs font-medium transition-colors">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
                 Instagram
             </a>
@@ -57,7 +52,7 @@
             <h2 class="text-2xl font-bold text-center mb-4 text-gray-800">🌟 Nuestros Jugos Especiales</h2>
             
             <div class="grid grid-cols-1 gap-3 mb-4">
-                <div id="juice-verde" class="juice-card bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('verde')">
+                <div class="juice-card bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('verde')">
                     <div class="text-3xl">💚</div>
                     <div class="flex-1">
                         <h3 class="text-lg font-bold text-green-800">Green Day</h3>
@@ -66,7 +61,7 @@
                     <div class="text-lg font-bold text-green-800">$45</div>
                 </div>
 
-                <div id="juice-naranja" class="juice-card bg-gradient-to-br from-orange-100 to-orange-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('naranja')">
+                <div class="juice-card bg-gradient-to-br from-orange-100 to-orange-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('naranja')">
                     <div class="text-3xl">🧡</div>
                     <div class="flex-1">
                         <h3 class="text-lg font-bold text-orange-800">AC/DCitrus</h3>
@@ -75,7 +70,7 @@
                     <div class="text-lg font-bold text-orange-800">$45</div>
                 </div>
 
-                <div id="juice-mango" class="juice-card bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('mango')">
+                <div class="juice-card bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('mango')">
                     <div class="text-3xl">💛</div>
                     <div class="flex-1">
                         <h3 class="text-lg font-bold text-yellow-800">Mango Van Gogh</h3>
@@ -84,7 +79,7 @@
                     <div class="text-lg font-bold text-yellow-800">$50</div>
                 </div>
 
-                <div id="juice-berries" class="juice-card bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('berries')">
+                <div class="juice-card bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('berries')">
                     <div class="text-3xl">🍇</div>
                     <div class="flex-1">
                         <h3 class="text-lg font-bold text-purple-800">Berryoncé</h3>
@@ -93,7 +88,7 @@
                     <div class="text-lg font-bold text-purple-800">$55</div>
                 </div>
 
-                <div id="juice-fresa" class="juice-card bg-gradient-to-br from-pink-100 to-pink-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('fresa')">
+                <div class="juice-card bg-gradient-to-br from-pink-100 to-pink-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('fresa')">
                     <div class="text-3xl">❤️</div>
                     <div class="flex-1">
                         <h3 class="text-lg font-bold text-pink-800">Adeleicious</h3>
@@ -102,7 +97,7 @@
                     <div class="text-lg font-bold text-pink-800">$50</div>
                 </div>
 
-                <div id="juice-personalizado" class="juice-card bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('personalizado')">
+                <div class="juice-card bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('personalizado')">
                     <div class="text-3xl">⭐</div>
                     <div class="flex-1">
                         <h3 class="text-lg font-bold text-blue-800">¡Crea el Tuyo!</h3>
@@ -156,64 +151,132 @@
                             Proceder al Checkout
                         </button>
                     </div>
-                </div>
-            </div>
+                </div></div>
         </div>
 
         <!-- Extras para Personalizar -->
         <div id="extras-section" class="bg-white rounded-2xl shadow-xl p-4 mb-4 hidden">
             <h3 class="text-xl font-bold mb-3 text-gray-800">🌈 Crea el Tuyo</h3>
-            <p class="text-sm text-gray-600 mb-3">Selecciona al menos 3 frutas. El costo es de $60 e incluye hasta 3 ingredientes extras. Cada extra adicional tiene un costo de $10.</p>
+            <p class="text-sm text-gray-600 mb-3">Los costos pueden variar de acuerdo a su selección</p>
             <div class="grid grid-cols-3 gap-2">
-                <div id="extra-pepino" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('pepino')">
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('pepino')">
                     <div class="text-xl mb-1">🥒</div>
                     <div class="text-xs font-medium">Pepino</div>
                 </div>
-                <div id="extra-apio" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('apio')">
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('apio')">
                     <div class="text-xl mb-1">🥬</div>
                     <div class="text-xs font-medium">Apio</div>
                 </div>
-                <div id="extra-fresa" class="extra-item bg-pink-100 p-2 rounded-lg text-center cursor-pointer hover:bg-pink-200" onclick="toggleExtra('fresa')">
+                <div class="extra-item bg-pink-100 p-2 rounded-lg text-center cursor-pointer hover:bg-pink-200" onclick="toggleExtra('fresa')">
                     <div class="text-xl mb-1">🍓</div>
                     <div class="text-xs font-medium">Fresa</div>
                 </div>
-                <div id="extra-platano" class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('platano')">
+                <div class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('platano')">
                     <div class="text-xl mb-1">🍌</div>
                     <div class="text-xs font-medium">Plátano</div>
                 </div>
-                <div id="extra-limon" class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('limon')">
+                <div class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('limon')">
                     <div class="text-xl mb-1">🍋</div>
                     <div class="text-xs font-medium">Limón</div>
                 </div>
-                <div id="extra-naranja" class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('naranja')">
+                <div class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('naranja')">
                     <div class="text-xl mb-1">🍊</div>
                     <div class="text-xs font-medium">Naranja</div>
                 </div>
-                <div id="extra-papaya" class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('papaya')">
+                <div class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('papaya')">
                     <div class="text-xl mb-1">🧡</div>
                     <div class="text-xs font-medium">Papaya</div>
                 </div>
-                <div id="extra-manzana" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('manzana')">
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('manzana')">
                     <div class="text-xl mb-1">🍏</div>
                     <div class="text-xs font-medium">Manzana</div>
                 </div>
-                <div id="extra-mango" class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('mango')">
+                <div class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('mango')">
                     <div class="text-xl mb-1">🥭</div>
                     <div class="text-xs font-medium">Mango</div>
                 </div>
-                <div id="extra-berries" class="extra-item bg-purple-100 p-2 rounded-lg text-center cursor-pointer hover:bg-purple-200" onclick="toggleExtra('berries')">
+                <div class="extra-item bg-purple-100 p-2 rounded-lg text-center cursor-pointer hover:bg-purple-200" onclick="toggleExtra('berries')">
                     <div class="text-xl mb-1">🍇</div>
                     <div class="text-xs font-medium">Berries</div>
                 </div>
-                <div id="extra-zanahoria" class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('zanahoria')">
+                <div class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('zanahoria')">
                     <div class="text-xl mb-1">🥕</div>
                     <div class="text-xs font-medium">Zanahoria</div>
                 </div>
-                <div id="extra-espinaca" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('espinaca')">
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('espinaca')">
                     <div class="text-xl mb-1">🥬</div>
                     <div class="text-xs font-medium">Espinaca</div>
                 </div>
-                <div id="extra-betabel" class="extra-item bg-red-100 p-2 rounded-lg text-center cursor-pointer hover:bg-red-200" onclick="toggleExtra('betabel')">
+                <div class="extra-item bg-red-100 p-2 rounded-lg text-center cursor-pointer hover:bg-red-200" onclick="toggleExtra('betabel')">
+                    <div class="text-xl mb-1">🟣</div>
+                    <div class="text-xs font-medium">Betabel</div>
+                </div></div>
+            
+            <!-- Nombre tu estilo -->
+            <div class="mt-4 p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg border-2 border-dashed border-purple-300">
+                <h4 class="text-lg font-bold text-purple-800 mb-2">✨ ¡Ponle nombre a tu estilo!</h4>
+                <p class="text-sm text-purple-700 mb-2">Si nos gusta mucho podría aparecer en el menú</p>
+                <input type="text" id="custom-name" placeholder="Ej: El Súper Verde de María" class="w-full p-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm">
+            </div>
+        </div>
+
+
+        </div>
+
+        <!-- Extras para Personalizar -->
+        <div id="extras-section" class="bg-white rounded-2xl shadow-xl p-4 mb-4 hidden">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">🌈 Crea el Tuyo</h3>
+            <p class="text-sm text-gray-600 mb-3">Los costos pueden variar de acuerdo a su selección</p>
+            <div class="grid grid-cols-3 gap-2">
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('pepino')">
+                    <div class="text-xl mb-1">🥒</div>
+                    <div class="text-xs font-medium">Pepino</div>
+                </div>
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('apio')">
+                    <div class="text-xl mb-1">🥬</div>
+                    <div class="text-xs font-medium">Apio</div>
+                </div>
+                <div class="extra-item bg-pink-100 p-2 rounded-lg text-center cursor-pointer hover:bg-pink-200" onclick="toggleExtra('fresa')">
+                    <div class="text-xl mb-1">🍓</div>
+                    <div class="text-xs font-medium">Fresa</div>
+                </div>
+                <div class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('platano')">
+                    <div class="text-xl mb-1">🍌</div>
+                    <div class="text-xs font-medium">Plátano</div>
+                </div>
+                <div class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('limon')">
+                    <div class="text-xl mb-1">🍋</div>
+                    <div class="text-xs font-medium">Limón</div>
+                </div>
+                <div class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('naranja')">
+                    <div class="text-xl mb-1">🍊</div>
+                    <div class="text-xs font-medium">Naranja</div>
+                </div>
+                <div class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('papaya')">
+                    <div class="text-xl mb-1">🧡</div>
+                    <div class="text-xs font-medium">Papaya</div>
+                </div>
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('manzana')">
+                    <div class="text-xl mb-1">🍏</div>
+                    <div class="text-xs font-medium">Manzana</div>
+                </div>
+                <div class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('mango')">
+                    <div class="text-xl mb-1">🥭</div>
+                    <div class="text-xs font-medium">Mango</div>
+                </div>
+                <div class="extra-item bg-purple-100 p-2 rounded-lg text-center cursor-pointer hover:bg-purple-200" onclick="toggleExtra('berries')">
+                    <div class="text-xl mb-1">🍇</div>
+                    <div class="text-xs font-medium">Berries</div>
+                </div>
+                <div class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('zanahoria')">
+                    <div class="text-xl mb-1">🥕</div>
+                    <div class="text-xs font-medium">Zanahoria</div>
+                </div>
+                <div class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('espinaca')">
+                    <div class="text-xl mb-1">🥬</div>
+                    <div class="text-xs font-medium">Espinaca</div>
+                </div>
+                <div class="extra-item bg-red-100 p-2 rounded-lg text-center cursor-pointer hover:bg-red-200" onclick="toggleExtra('betabel')">
                     <div class="text-xl mb-1">🟣</div>
                     <div class="text-xs font-medium">Betabel</div>
                 </div>
@@ -231,15 +294,15 @@
         <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
             <h3 class="text-xl font-bold mb-3 text-gray-800">🥤 Método de Preparación</h3>
             <div class="grid grid-cols-1 gap-3">
-                <div id="prep-frapeado" class="prep-option bg-blue-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectPrep('frapeado')">
+                <div class="prep-option bg-blue-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectPrep('frapeado')">
                     <div class="text-2xl">🧊</div>
                     <h4 class="font-bold">Frapeado</h4>
                 </div>
-                <div id="prep-natural" class="prep-option bg-green-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectPrep('natural')">
+                <div class="prep-option bg-green-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectPrep('natural')">
                     <div class="text-2xl">🌿</div>
                     <h4 class="font-bold">Natural</h4>
                 </div>
-                <div id="prep-rocas" class="prep-option bg-gray-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-gray-200 flex items-center gap-3" onclick="selectPrep('rocas')">
+                <div class="prep-option bg-gray-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-gray-200 flex items-center gap-3" onclick="selectPrep('rocas')">
                     <div class="text-2xl">🧊</div>
                     <h4 class="font-bold">En las Rocas</h4>
                 </div>
@@ -250,19 +313,19 @@
         <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
             <h3 class="text-xl font-bold mb-3 text-gray-800">🍯 Endulzante</h3>
             <div class="grid grid-cols-2 gap-3">
-                <div id="sweet-azucar" class="sweet-option bg-yellow-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-yellow-200" onclick="selectSweet('azucar')">
+                <div class="sweet-option bg-yellow-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-yellow-200" onclick="selectSweet('azucar')">
                     <div class="text-xl mb-1 text-center">🍯</div>
                     <h4 class="font-bold text-center text-sm">Azúcar</h4>
                 </div>
-                <div id="sweet-stevia" class="sweet-option bg-green-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200" onclick="selectSweet('stevia')">
+                <div class="sweet-option bg-green-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200" onclick="selectSweet('stevia')">
                     <div class="text-xl mb-1 text-center">🌿</div>
                     <h4 class="font-bold text-center text-sm">Stevia</h4>
                 </div>
-                <div id="sweet-miel" class="sweet-option bg-amber-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-amber-200" onclick="selectSweet('miel')">
+                <div class="sweet-option bg-amber-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-amber-200" onclick="selectSweet('miel')">
                     <div class="text-xl mb-1 text-center">🍯</div>
                     <h4 class="font-bold text-center text-sm">Miel Natural</h4>
                 </div>
-                <div id="sweet-sin" class="sweet-option bg-gray-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-gray-200" onclick="selectSweet('sin')">
+                <div class="sweet-option bg-gray-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-gray-200" onclick="selectSweet('sin')">
                     <div class="text-xl mb-1 text-center">🚫</div>
                     <h4 class="font-bold text-center text-sm">Sin Azúcar</h4>
                 </div>
@@ -273,17 +336,17 @@
         <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
             <h3 class="text-xl font-bold mb-3 text-gray-800">Tamaño</h3>
             <div class="grid grid-cols-1 gap-3">
-                <div id="size-16oz" class="size-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectSize('16oz')">
+                <div class="size-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectSize('16oz')">
                     <div class="text-3xl">🥤</div>
                     <div class="flex-1">
                         <h4 class="font-bold">16oz - Chico</h4>
                     </div>
                 </div>
-                <div id="size-24oz" class="size-option bg-purple-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-purple-200 flex items-center gap-3" onclick="selectSize('24oz')">
+                <div class="size-option bg-purple-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-purple-200 flex items-center gap-3" onclick="selectSize('24oz')">
                     <div class="text-3xl">🥤</div>
-                    <div class="flex-1 flex justify-between items-center">
+                    <div class="flex-1">
                         <h4 class="font-bold">24oz - Grande</h4>
-                        <span class="text-sm font-semibold text-purple-700">+$10</span>
+                         <p class="text-sm text-gray-600">+$10 MXN</p>
                     </div>
                 </div>
             </div>
@@ -293,14 +356,14 @@
         <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
             <h3 class="text-xl font-bold mb-3 text-gray-800">Entrega</h3>
             <div class="grid grid-cols-1 gap-3">
-                <div id="delivery-tienda" class="delivery-option bg-green-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectDelivery('tienda')">
+                <div class="delivery-option bg-green-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectDelivery('tienda')">
                     <div class="text-3xl">🏪</div>
                     <div class="flex-1">
                         <h4 class="font-bold">Recoger en Tienda</h4>
                         <p class="text-sm text-gray-600">Sin costo adicional</p>
                     </div>
                 </div>
-                <div id="delivery-domicilio" class="delivery-option bg-orange-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-orange-200 flex items-center gap-3" onclick="selectDelivery('domicilio')">
+                <div class="delivery-option bg-orange-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-orange-200 flex items-center gap-3" onclick="selectDelivery('domicilio')">
                     <div class="text-3xl">🚗</div>
                     <div class="flex-1">
                         <h4 class="font-bold">Envío a Domicilio</h4>
@@ -314,11 +377,11 @@
         <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
             <h3 class="text-xl font-bold mb-3 text-gray-800">Método de Pago</h3>
             <div class="grid grid-cols-1 gap-3">
-                <div id="payment-efectivo" class="payment-option bg-green-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectPayment('efectivo')">
+                <div class="payment-option bg-green-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectPayment('efectivo')">
                     <div class="text-3xl">💵</div>
                     <h4 class="font-bold">Efectivo</h4>
                 </div>
-                <div id="payment-transferencia" class="payment-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectPayment('transferencia')">
+                <div class="payment-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectPayment('transferencia')">
                     <div class="text-3xl">💳</div>
                     <h4 class="font-bold">Transferencia HSBC</h4>
                 </div>
@@ -331,15 +394,15 @@
             <div class="space-y-3">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Colonia</label>
-                    <input type="text" id="colonia" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    <input type="text" id="colonia" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Calle</label>
-                    <input type="text" id="calle" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    <input type="text" id="calle" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Número Exterior</label>
-                    <input type="text" id="numero" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    <input type="text" id="numero" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Privada (opcional)</label>
@@ -351,87 +414,40 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
-                    <input type="tel" id="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    <input type="tel" id="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
             </div>
         </div>
 
         <!-- Botón Agregar al Carrito -->
         <div id="add-to-cart-section" class="hidden mb-4">
-            <button id="add-to-cart-btn" onclick="addToCart()" class="w-full bg-gradient-to-r from-green-500 to-orange-500 text-white font-bold py-4 px-6 rounded-xl hover:from-green-600 hover:to-orange-600 transition-colors shadow-lg text-lg">
-                🛒 Agregar al Carrito
-            </button>
+            <div class="flex gap-2">
+                <button id="add-to-cart-btn" onclick="addToCart()" class="flex-1 bg-gradient-to-r from-green-500 to-orange-500 text-white font-bold py-4 px-6 rounded-xl hover:from-green-600 hover:to-orange-600 transition-colors shadow-lg text-lg">
+                    🛒 Agregar al Carrito
+                </button>
+                <button onclick="showIndividualOrder()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-4 rounded-xl transition-colors shadow-lg">
+                    ✅ Aceptar Pedido
+                </button>
+            </div>
         </div>
 
         <!-- Resumen del Pedido Individual -->
         <div id="order-summary" class="bg-gradient-to-r from-green-500 to-orange-500 text-white rounded-2xl shadow-xl p-4 mb-4 hidden">
-            <h3 class="text-xl font-bold mb-3">Resumen de tu Pedido</h3>
-            <div id="final-summary-content"></div>
-            <button id="whatsapp-btn" onclick="sendWhatsApp()" class="w-full bg-white text-green-600 font-bold py-3 px-4 mt-4 rounded-xl hover:bg-gray-100 transition-colors pulse-animation text-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5 mr-2 -mt-1" viewBox="0 0 448 512" fill="currentColor">
-                    <path d="M380.9 97.1C339.7 54.9 281.5 32 224.1 32c-124.9 0-226 101.4-226 226.4 0 36.1 8.5 71.4 24.3 103.1L2.7 483.5c-3.1 9.4 6.7 18.2 15.1 14.8l105.7-43.1c31.1 15.6 65.1 23.6 100.2 23.6 124.9 0 226-101.4 226-226.4 0-53.7-18.1-104.9-50.9-145.9zM224.1 448c-29.7 0-58.1-8.7-82.7-25.2l-5.5-3.3-57.8 23.5 24.3-56.1-3.6-5.8C49.9 292.9 39 260.6 39 226.4c0-101.3 82.2-183.6 183.4-183.6 50.8 0 98.7 20.1 134.1 55.6s55.1 83.9 55.1 134.7c0 101.3-82.2 183.6-183.4 183.6zM337.3 322c-2.4-1.2-14.8-7.3-17.1-8.1-2.4-1.2-4.1-1.8-5.8 1.8-1.7 3.6-6.7 8.1-8.2 9.7-1.5 1.5-3 1.8-5.4.6-2.4-1.2-10.2-3.8-19.4-12-7.2-6.5-12-14.4-13.4-16.7-1.4-2.4-.1-3.6 1.2-4.8 1.1-1.1 2.4-2.4 3.6-3.8 1.2-1.2 1.5-2.4 1.8-3.6.6-1.2.3-2.4-.3-3.6-2.4-6-10.2-24.5-14-33.6-3.8-9.1-3.8-7.5-6.6-7.8-2.7-.3-5.8-.3-8.8-.3-2.4 0-5.8.6-8.8 3c-2.7 2.4-10.2 10.2-10.2 24.8 0 14.5 10.5 28.7 12 30.5 1.5 1.8 20.1 30.6 48.7 42.1 28.6 11.5 28.6 7.6 33.7 7.3 5.1-.3 14.8-6 16.9-12.2 2.1-6.1 2.1-11.2 1.5-12.2-.6-1.2-2.4-1.8-5.1-3z"/>
-                </svg>
+            <h3 class="text-xl font-bold mb-3">Tu Pedido</h3>
+            <div class="flex items-center gap-4 mb-3">
+                <div id="juice-image" class="text-6xl"></div>
+                <div id="order-details" class="space-y-1 flex-1 text-sm"></div>
+            </div>
+            <div id="total-price" class="text-lg font-bold mb-3 bg-white bg-opacity-20 p-3 rounded-lg"></div>
+            <button id="whatsapp-btn" onclick="sendWhatsApp()" class="w-full bg-white text-green-600 font-bold py-3 px-4 rounded-xl hover:bg-gray-100 transition-colors pulse-animation text-sm">
                 Enviar Pedido por WhatsApp
             </button>
         </div>
-
     </div>
 
     <script>
-        // Data principal del menú
-        const menuData = {
-            juices: {
-                'verde': { name: 'Green Day', price: 45, emoji: '💚' },
-                'naranja': { name: 'AC/DCitrus', price: 45, emoji: '🧡' },
-                'mango': { name: 'Mango Van Gogh', price: 50, emoji: '💛' },
-                'berries': { name: 'Berryoncé', price: 55, emoji: '🍇' },
-                'fresa': { name: 'Adeleicious', price: 50, emoji: '❤️' },
-                'personalizado': { name: 'Jugo Personalizado', price: 50, emoji: '⭐' }
-            },
-            extras: {
-                'pepino': { name: 'Pepino', emoji: '🥒', price: 0 },
-                'apio': { name: 'Apio', emoji: '🥬', price: 0 },
-                'fresa': { name: 'Fresa', emoji: '🍓', price: 0 },
-                'platano': { name: 'Plátano', emoji: '🍌', price: 0 },
-                'limon': { name: 'Limón', emoji: '🍋', price: 0 },
-                'naranja': { name: 'Naranja', emoji: '🍊', price: 0 },
-                'papaya': { name: 'Papaya', emoji: '🧡', price: 0 },
-                'manzana': { name: 'Manzana', emoji: '🍏', price: 0 },
-                'mango': { name: 'Mango', emoji: '🥭', price: 0 },
-                'berries': { name: 'Berries', emoji: '🍇', price: 0 },
-                'zanahoria': { name: 'Zanahoria', emoji: '🥕', price: 0 },
-                'espinaca': { name: 'Espinaca', emoji: '🥬', price: 0 },
-                'betabel': { name: 'Betabel', emoji: '🟣', price: 0 }
-            },
-            sizes: {
-                '16oz': { name: '16oz - Chico', price: 0 },
-                '24oz': { name: '24oz - Grande', price: 10 }
-            },
-            preps: {
-                'frapeado': 'Frapeado',
-                'natural': 'Natural',
-                'rocas': 'En las Rocas'
-            },
-            sweets: {
-                'azucar': 'Azúcar',
-                'stevia': 'Stevia',
-                'miel': 'Miel Natural',
-                'sin': 'Sin Azúcar'
-            },
-            deliveries: {
-                'tienda': 'Recoger en Tienda',
-                'domicilio': 'Envío a Domicilio'
-            },
-            payments: {
-                'efectivo': 'Efectivo',
-                'transferencia': 'Transferencia HSBC'
-            }
-        };
-
-        // Estado de la aplicación
         let currentOrder = {
             juice: '',
-            name: '',
             extras: [],
             preparation: '',
             sweetener: '',
@@ -439,313 +455,816 @@
             delivery: '',
             payment: ''
         };
-        let cart = [];
 
-        // Funciones de selección y UI
-        function selectOption(type, value) {
-            const container = document.getElementById(type + '-section') || document.body;
-            const elements = container.querySelectorAll(`.${type}-option`);
-            elements.forEach(el => el.classList.remove('selected'));
-            document.getElementById(type + '-' + value).classList.add('selected');
-        }
+        let cart = [];
+        let cartCount = 0;
 
         function selectJuice(juice) {
-            selectOption('juice', juice);
-            currentOrder = { ...currentOrder, juice, name: menuData.juices[juice].name, extras: [] };
+            document.querySelectorAll('.juice-card').forEach(card => {
+                card.classList.remove('selected');
+            });
             
-            // Toggle visibility of extras section for custom juice
-            const extrasSection = document.getElementById('extras-section');
+            event.target.closest('.juice-card').classList.add('selected');
+            currentOrder.juice = juice;
+            
             if (juice === 'personalizado') {
-                extrasSection.classList.remove('hidden');
+                document.getElementById('extras-section').classList.remove('hidden');
+                // Scroll to extras section
+                setTimeout(() => {
+                    document.getElementById('extras-section').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
             } else {
-                extrasSection.classList.add('hidden');
-                // Reset selected extras
+                document.getElementById('extras-section').classList.add('hidden');
+                currentOrder.extras = [];
                 document.querySelectorAll('.extra-item').forEach(item => {
                     item.classList.remove('selected');
                 });
+                // Scroll to preparation section
+                setTimeout(() => {
+                    const preparationSection = document.querySelector('h3').parentElement;
+                    const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl.p-6.mb-6');
+                    for (let section of sections) {
+                        if (section.textContent.includes('Método de Preparación')) {
+                            section.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                            break;
+                        }
+                    }
+                }, 100);
             }
+            
             showAddToCartButton();
+            updateOrderSummary();
+        }
+
+        function showAddToCartButton() {
+            if (currentOrder.juice && currentOrder.preparation && currentOrder.sweetener && currentOrder.size) {
+                document.getElementById('add-to-cart-section').classList.remove('hidden');
+            } else {
+                document.getElementById('add-to-cart-section').classList.add('hidden');
+            }
+        }
+
+        function showIndividualOrder() {
+            if (!currentOrder.juice || !currentOrder.preparation || !currentOrder.sweetener || !currentOrder.size) {
+                alert('Por favor completa todas las opciones antes de continuar');
+                return;
+            }
+            
+            // Scroll to delivery section
+            setTimeout(() => {
+                const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
+                for (let section of sections) {
+                    if (section.textContent.includes('Entrega')) {
+                        section.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                        break;
+                    }
+                }
+            }, 100);
         }
 
         function toggleExtra(extra) {
-            const index = currentOrder.extras.indexOf(extra);
-            const extraEl = document.getElementById('extra-' + extra);
+            const extraElement = event.target.closest('.extra-item');
             
-            if (index > -1) {
-                currentOrder.extras.splice(index, 1);
-                extraEl.classList.remove('selected');
+            if (currentOrder.extras.includes(extra)) {
+                currentOrder.extras = currentOrder.extras.filter(e => e !== extra);
+                extraElement.classList.remove('selected');
             } else {
                 currentOrder.extras.push(extra);
-                extraEl.classList.add('selected');
+                extraElement.classList.add('selected');
             }
-            showAddToCartButton();
+            
+            updateOrderSummary();
         }
 
         function selectPrep(prep) {
-            selectOption('prep', prep);
+            document.querySelectorAll('.prep-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.prep-option').classList.add('selected');
             currentOrder.preparation = prep;
+            
+            // Scroll to next section
+            setTimeout(() => {
+                const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
+                for (let section of sections) {
+                    if (section.textContent.includes('Endulzante')) {
+                        section.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                        break;
+                    }
+                }
+            }, 100);
+            
             showAddToCartButton();
+            updateOrderSummary();
         }
 
         function selectSweet(sweet) {
-            selectOption('sweet', sweet);
+            document.querySelectorAll('.sweet-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.sweet-option').classList.add('selected');
             currentOrder.sweetener = sweet;
+            
+            // Scroll to next section
+            setTimeout(() => {
+                const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
+                for (let section of sections) {
+                    if (section.textContent.includes('Tamaño')) {
+                        section.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                        break;
+                    }
+                }
+            }, 100);
+            
             showAddToCartButton();
+            updateOrderSummary();
         }
 
         function selectSize(size) {
-            selectOption('size', size);
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.size-option').classList.add('selected');
             currentOrder.size = size;
+            
             showAddToCartButton();
+            updateOrderSummary();
         }
 
         function selectDelivery(delivery) {
-            selectOption('delivery', delivery);
+            document.querySelectorAll('.delivery-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.delivery-option').classList.add('selected');
             currentOrder.delivery = delivery;
-            const deliveryForm = document.getElementById('delivery-form');
+            
             if (delivery === 'domicilio') {
-                deliveryForm.classList.remove('hidden');
+                document.getElementById('delivery-form').classList.remove('hidden');
             } else {
-                deliveryForm.classList.add('hidden');
+                document.getElementById('delivery-form').classList.add('hidden');
+            }
+            
+            // Scroll to next section
+            setTimeout(() => {
+                const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
+                for (let section of sections) {
+                    if (section.textContent.includes('Método de Pago')) {
+                        section.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start' 
+                        });
+                        break;
+                    }
+                }
+            }, 100);
+            
+            // Show cart checkout summary if cart has items
+            if (cart.length > 0) {
+                showCartCheckoutSummary();
+            } else {
+                updateOrderSummary();
             }
         }
 
         function selectPayment(payment) {
-            selectOption('payment', payment);
+            document.querySelectorAll('.payment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.payment-option').classList.add('selected');
             currentOrder.payment = payment;
-        }
-
-        function showAddToCartButton() {
-            const hasJuice = currentOrder.juice !== '';
-            const hasPrep = currentOrder.preparation !== '';
-            const hasSweet = currentOrder.sweetener !== '';
-            const hasSize = currentOrder.size !== '';
-
-            const isCustom = currentOrder.juice === 'personalizado';
-            const hasEnoughExtras = !isCustom || (isCustom && currentOrder.extras.length >= 3);
-
-            const addToCartSection = document.getElementById('add-to-cart-section');
-            if (hasJuice && hasPrep && hasSweet && hasSize && hasEnoughExtras) {
-                addToCartSection.classList.remove('hidden');
+            
+            // Show final order summary for cart checkout
+            if (cart.length > 0) {
+                showCartCheckoutSummary();
             } else {
-                addToCartSection.classList.add('hidden');
+                updateOrderSummary();
             }
         }
 
-        function calculatePrice(order) {
-            let price = menuData.juices[order.juice].price;
-            if (order.juice === 'personalizado') {
-                const extraCount = order.extras.length;
-                if (extraCount > 3) {
-                    price += (extraCount - 3) * 10;
+        function showCartCheckoutSummary() {
+            if (currentOrder.delivery && currentOrder.payment) {
+                const summary = document.getElementById('order-summary');
+                const details = document.getElementById('order-details');
+                const totalPrice = document.getElementById('total-price');
+                const juiceImage = document.getElementById('juice-image');
+                const whatsappBtn = document.getElementById('whatsapp-btn');
+                
+                summary.classList.remove('hidden');
+                
+                // Scroll to order summary
+                setTimeout(() => {
+                    summary.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+                
+                let subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+                const totalJuices = cart.reduce((total, item) => total + item.quantity, 0);
+                let shippingCost = 0;
+                
+                // Aplicar costo de envío solo si es domicilio Y hay menos de 3 jugos
+                if (currentOrder.delivery === 'domicilio' && totalJuices < 3) {
+                    shippingCost = 20;
+                }
+                
+                let finalTotal = subtotal + shippingCost;
+                
+                juiceImage.innerHTML = '🛒';
+                
+                // Mostrar detalles completos del carrito
+                let orderText = `<div class="font-bold mb-2">🛒 Resumen del Carrito (${cart.length} productos)</div>`;
+                
+                // Agregar cada producto del carrito
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    orderText += `<div class="text-xs mb-2 bg-white bg-opacity-20 p-2 rounded">`;
+                    orderText += `<div class="font-medium">${index + 1}. ${item.name}`;
+                    if (item.customName) {
+                        orderText += ` - "${item.customName}"`;
+                    }
+                    orderText += `</div>`;
+                    orderText += `<div>Tamaño: ${item.size === '16oz' ? '16oz (Chico)' : '24oz (Grande)'} | Cantidad: ${item.quantity}</div>`;
+                    if (item.extras.length > 0) {
+                        orderText += `<div>Extras: ${item.extras.join(', ')}</div>`;
+                    }
+                    orderText += `<div>Preparación: ${item.preparation} | Endulzante: ${item.sweetener}</div>`;
+                    orderText += `<div class="font-medium">Subtotal: $${itemTotal} MXN</div>`;
+                    orderText += `</div>`;
+                });
+                
+                orderText += `<div class="mt-2 pt-2 border-t border-white border-opacity-30">`;
+                orderText += `<div>📦 Entrega: ${currentOrder.delivery === 'tienda' ? 'Recoger en tienda' : 'Envío a domicilio'}</div>`;
+                orderText += `<div>💳 Pago: ${currentOrder.payment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}</div>`;
+                orderText += `</div>`;
+                
+                details.innerHTML = orderText;
+                
+                let shippingText = '';
+                if (currentOrder.delivery === 'domicilio') {
+                    if (totalJuices >= 3) {
+                        shippingText = `Subtotal: $${subtotal} + Envío: $0 (¡GRATIS por ${totalJuices} jugos! 🎉) = Total: $${finalTotal} MXN`;
+                    } else {
+                        shippingText = `Subtotal: $${subtotal} + Envío: $${shippingCost} = Total: $${finalTotal} MXN`;
+                    }
+                } else {
+                    shippingText = `Subtotal: $${subtotal} + Envío: $0 (Recoger en tienda) = Total: $${finalTotal} MXN`;
+                }
+                totalPrice.innerHTML = shippingText;
+
+                // Validar campos de domicilio si es necesario
+                if (currentOrder.delivery === 'domicilio') {
+                    const colonia = document.getElementById('colonia').value.trim();
+                    const calle = document.getElementById('calle').value.trim();
+                    const numero = document.getElementById('numero').value.trim();
+                    const telefono = document.getElementById('telefono').value.trim();
+
+                    if (!colonia || !calle || !numero || !telefono) {
+                        whatsappBtn.disabled = true;
+                        whatsappBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                        whatsappBtn.innerHTML = 'Complete los datos de domicilio';
+                        return; // No continuar si faltan datos
+                    }
+                }
+                
+                // Si llegamos aquí, todo está completo
+                whatsappBtn.disabled = false;
+                whatsappBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                whatsappBtn.innerHTML = 'Enviar Pedido por WhatsApp';
+            }
+        }
+
+        function updateOrderSummary() {
+            const summary = document.getElementById('order-summary');
+            const details = document.getElementById('order-details');
+            const totalPrice = document.getElementById('total-price');
+            const juiceImage = document.getElementById('juice-image');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            
+            if (currentOrder.juice && currentOrder.preparation && currentOrder.sweetener && 
+                currentOrder.size && currentOrder.delivery && currentOrder.payment) {
+                summary.classList.remove('hidden');
+                
+                let orderText = '';
+                let price = 0;
+                
+                // Precios base por jugo
+                const juicePrices = {
+                    'verde': 55,
+                    'naranja': 55,
+                    'mango': 60,
+                    'berries': 65,
+                    'fresa': 60,
+                    'personalizado': 50
+                };
+                
+                price = juicePrices[currentOrder.juice] || 50;
+
+                // Agregar costo por tamaño
+                if (currentOrder.size === '24oz') {
+                    price += 10;
+                }
+                
+                const juiceNames = {
+                    'verde': 'Green Day',
+                    'naranja': 'AC/DCitrus',
+                    'mango': 'Mango Van Gogh',
+                    'berries': 'Berryoncé',
+                    'fresa': 'Adeleicious',
+                    'personalizado': 'Jugo Personalizado'
+                };
+
+                const juiceImages = {
+                    'verde': '🥬',
+                    'naranja': '🍊',
+                    'mango': '🥭',
+                    'berries': '🍇',
+                    'fresa': '🍓',
+                    'personalizado': '🎨'
+                };
+                
+                juiceImage.innerHTML = juiceImages[currentOrder.juice];
+                
+                orderText += `<div class="font-bold">${juiceNames[currentOrder.juice]}</div>`;
+                
+                if (currentOrder.extras.length > 0) {
+                    orderText += `<div>Extras: ${currentOrder.extras.join(', ')}</div>`;
+                    // Cobrar $5 por cada ingrediente extra a partir del 4to
+                    if (currentOrder.extras.length > 3) {
+                        const extraCost = (currentOrder.extras.length - 3) * 5;
+                        price += extraCost;
+                        orderText += `<div class="text-xs text-yellow-200">+$${extraCost} por ${currentOrder.extras.length - 3} extra(s)</div>`;
+                    }
+                }
+                
+                orderText += `<div>Preparación: ${currentOrder.preparation}</div>`;
+                orderText += `<div>Endulzante: ${currentOrder.sweetener}</div>`;
+                orderText += `<div>Tamaño: ${currentOrder.size}</div>`;
+                orderText += `<div>Entrega: ${currentOrder.delivery === 'tienda' ? 'Recoger en tienda' : 'Envío a domicilio'}</div>`;
+                orderText += `<div>Pago: ${currentOrder.payment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}</div>`;
+                
+                // Para pedidos individuales, siempre cobrar envío si es domicilio
+                if (currentOrder.delivery === 'domicilio') {
+                    price += 20;
+                }
+                
+                details.innerHTML = orderText;
+                totalPrice.innerHTML = `Total: $${price} MXN`;
+
+                // Validar campos de domicilio
+                if (currentOrder.delivery === 'domicilio') {
+                    const colonia = document.getElementById('colonia').value.trim();
+                    const calle = document.getElementById('calle').value.trim();
+                    const numero = document.getElementById('numero').value.trim();
+                    const telefono = document.getElementById('telefono').value.trim();
+
+                    if (!colonia || !calle || !numero || !telefono) {
+                        whatsappBtn.disabled = true;
+                        whatsappBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                        whatsappBtn.innerHTML = 'Complete los datos de domicilio';
+                    } else {
+                        whatsappBtn.disabled = false;
+                        whatsappBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        whatsappBtn.innerHTML = 'Enviar Pedido por WhatsApp';
+                    }
+                } else {
+                    whatsappBtn.disabled = false;
+                    whatsappBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    whatsappBtn.innerHTML = 'Enviar Pedido por WhatsApp';
+                }
+            } else {
+                summary.classList.add('hidden');
+            }
+        }
+
+        function sendWhatsApp() {
+            let message = `🍹 ¡Hola! Quiero hacer un pedido de FruitBox\n\n`;
+            
+            // Si hay items en el carrito, enviar pedido del carrito
+            if (cart.length > 0) {
+                message += `🛒 MI PEDIDO (${cart.length} productos):\n\n`;
+                
+                let subtotal = 0;
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    
+                    message += `${index + 1}. ${item.name}\n`;
+                    if (item.customName) {
+                        message += `   ✨ "${item.customName}"\n`;
+                    }
+                    message += `   📏 Tamaño: ${item.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
+                    message += `   🥤 Preparación: ${item.preparation}\n`;
+                    message += `   🍯 Endulzante: ${item.sweetener}\n`;
+                    if (item.extras.length > 0) {
+                        message += `   🌈 Extras: ${item.extras.join(', ')}\n`;
+                    }
+                    message += `   🔢 Cantidad: ${item.quantity}\n`;
+                    message += `   💰 Precio: $${itemTotal} MXN\n\n`;
+                });
+                
+                // Calcular envío - GRATIS si son 3 o más jugos
+                const totalJuices = cart.reduce((total, item) => total + item.quantity, 0);
+                let shippingCost = 0;
+                if (currentOrder.delivery === 'domicilio' && totalJuices < 3) {
+                    shippingCost = 20;
+                }
+                const finalTotal = subtotal + shippingCost;
+                
+                message += `💰 RESUMEN:\n`;
+                message += `   Subtotal: $${subtotal} MXN\n`;
+                if (totalJuices >= 3 && currentOrder.delivery === 'domicilio') {
+                    message += `   Envío: $${shippingCost} MXN (¡GRATIS por ${totalJuices} jugos! 🎉)\n`;
+                } else {
+                    message += `   Envío: $${shippingCost} MXN\n`;
+                }
+                message += `   🎯 TOTAL: $${finalTotal} MXN\n\n`;
+                
+                message += `💳 Método de pago: ${currentOrder.payment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n\n`;
+                
+                if (currentOrder.delivery === 'tienda') {
+                    message += `🏪 RECOGER EN TIENDA:\n\n`;
+                    message += `📍 Dirección del negocio:\n`;
+                    message += `🛣️ Calle: Saavedra\n`;
+                    message += `🏠 Número exterior: 1213\n`;
+                    message += `🏘️ Privada: Benavente\n`;
+                    message += `🔑 Código de acceso: 297822#\n`;
+                    message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
+                    message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
+                } else {
+                    const colonia = document.getElementById('colonia').value;
+                    const calle = document.getElementById('calle').value;
+                    const numero = document.getElementById('numero').value;
+                    const privada = document.getElementById('privada').value;
+                    const codigo = document.getElementById('codigo').value;
+                    const telefono = document.getElementById('telefono').value;
+
+                    message += `🚗 ENVÍO A DOMICILIO:\n`;
+                    message += `🏘️ Colonia: ${colonia}\n`;
+                    message += `🛣️ Calle: ${calle}\n`;
+                    message += `🏠 Número exterior: ${numero}\n`;
+                    if (privada) message += `🏘️ Privada: ${privada}\n`;
+                    if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
+                    message += `📱 Teléfono: ${telefono}\n\n`;
+
+                    if (currentOrder.payment === 'transferencia') {
+                        message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
+                        message += `🏦 Banco: HSBC\n`;
+                        message += `👤 Titular: Alan Stephen Vega Chacon\n`;
+                        message += `💰 Monto a transferir: $${finalTotal} MXN\n\n`;
+                        message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
+                    }
+                }
+            } else {
+                // Pedido individual (código original)
+                const juiceNames = {
+                    'verde': 'Green Day',
+                    'naranja': 'AC/DCitrus',
+                    'mango': 'Mango Van Gogh',
+                    'berries': 'Berryoncé',
+                    'fresa': 'Adeleicious',
+                    'personalizado': 'Jugo Personalizado'
+                };
+
+                const juicePrices = {
+                    'verde': 55,
+                    'naranja': 55,
+                    'mango': 60,
+                    'berries': 65,
+                    'fresa': 60,
+                    'personalizado': 50
+                };
+                
+                let price = juicePrices[currentOrder.juice] || 50;
+                
+                // Agregar costo por tamaño
+                if (currentOrder.size === '24oz') {
+                    price += 10;
+                }
+
+                if (currentOrder.extras.length > 3) {
+                    price += (currentOrder.extras.length - 3) * 5;
+                }
+                
+                // Para pedidos individuales, siempre cobrar envío si es domicilio
+                if (currentOrder.delivery === 'domicilio') {
+                    price += 20;
+                }
+
+                message += `🥤 Nombre del jugo: ${juiceNames[currentOrder.juice]}\n`;
+                message += `📏 Tamaño: ${currentOrder.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
+                
+                if (currentOrder.extras.length > 0) {
+                    message += `🌈 Ingredientes extras: ${currentOrder.extras.join(', ')}\n`;
+                    
+                    const customName = document.getElementById('custom-name').value.trim();
+                    if (customName) {
+                        message += `✨ Nombre de mi creación: "${customName}"\n`;
+                    }
+                }
+                
+                message += `🍯 Endulzante: ${currentOrder.sweetener}\n`;
+                message += `🥤 Preparación: ${currentOrder.preparation}\n`;
+                message += `💳 Método de pago: ${currentOrder.payment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n`;
+                message += `💰 Precio: $${price} MXN\n\n`;
+
+                if (currentOrder.delivery === 'tienda') {
+                    message += `🏪 RECOGER EN TIENDA:\n\n`;
+                    message += `📍 Dirección del negocio:\n`;
+                    message += `🛣️ Calle: Saavedra\n`;
+                    message += `🏠 Número exterior: 1213\n`;
+                    message += `🏘️ Privada: Benavente\n`;
+                    message += `🔑 Código de acceso: 297822#\n`;
+                    message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
+                    message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
+                } else {
+                    const colonia = document.getElementById('colonia').value;
+                    const calle = document.getElementById('calle').value;
+                    const numero = document.getElementById('numero').value;
+                    const privada = document.getElementById('privada').value;
+                    const codigo = document.getElementById('codigo').value;
+                    const telefono = document.getElementById('telefono').value;
+
+                    message += `🚗 ENVÍO A DOMICILIO:\n`;
+                    message += `🏘️ Colonia: ${colonia}\n`;
+                    message += `🛣️ Calle: ${calle}\n`;
+                    message += `🏠 Número exterior: ${numero}\n`;
+                    if (privada) message += `🏘️ Privada: ${privada}\n`;
+                    if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
+                    message += `📱 Teléfono: ${telefono}\n\n`;
+
+                    if (currentOrder.payment === 'transferencia') {
+                        message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
+                        message += `🏦 Banco: HSBC\n`;
+                        message += `👤 Titular: Alan Stephen Vega Chacon\n`;
+                        message += `💰 Monto a transferir: $${price} MXN\n\n`;
+                        message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
+                    }
                 }
             }
-            price += menuData.sizes[order.size].price;
-            return price;
+
+            message += `🍹✨ ¡Tu jugo, tu estilo, tu fruitbox! ✨🍹`;
+
+            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
         }
 
         function addToCart() {
-            const finalOrder = {
-                ...currentOrder,
-                price: calculatePrice(currentOrder),
-                customName: document.getElementById('custom-name').value
+            if (!currentOrder.juice || !currentOrder.preparation || !currentOrder.sweetener || !currentOrder.size) {
+                alert('Por favor completa todas las opciones antes de agregar al carrito');
+                return;
+            }
+
+            const juiceNames = {
+                'verde': 'Green Day',
+                'naranja': 'AC/DCitrus',
+                'mango': 'Mango Van Gogh',
+                'berries': 'Berryoncé',
+                'fresa': 'Adeleicious',
+                'personalizado': 'Jugo Personalizado'
             };
-            cart.push(finalOrder);
-            document.getElementById('cart-count').innerText = cart.length;
+
+            const juicePrices = {
+                'verde': 55,
+                'naranja': 55,
+                'mango': 60,
+                'berries': 65,
+                'fresa': 60,
+                'personalizado': 50
+            };
+
+            let price = juicePrices[currentOrder.juice] || 50;
+
+            // Agregar costo por tamaño
+            if (currentOrder.size === '24oz') {
+                price += 10;
+            }
             
-            // Reset state
-            currentOrder = { juice: '', name: '', extras: [], preparation: '', sweetener: '', size: '', delivery: '', payment: '' };
-            document.getElementById('custom-name').value = '';
-            document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+            // Agregar costo de ingredientes extras
+            if (currentOrder.extras.length > 3) {
+                price += (currentOrder.extras.length - 3) * 5;
+            }
+
+            const customName = document.getElementById('custom-name') ? document.getElementById('custom-name').value.trim() : '';
+
+            const cartItem = {
+                id: Date.now(),
+                juice: currentOrder.juice,
+                name: juiceNames[currentOrder.juice],
+                customName: customName,
+                extras: [...currentOrder.extras],
+                preparation: currentOrder.preparation,
+                sweetener: currentOrder.sweetener,
+                size: currentOrder.size,
+                price: price,
+                quantity: 1
+            };
+
+            cart.push(cartItem);
+            cartCount++;
+            updateCartDisplay();
+            
+            // Reset current order
+            resetCurrentOrder();
+            
+            // Scroll back to top smoothly
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            // Show success message
+            const addBtn = document.getElementById('add-to-cart-btn');
+            const originalText = addBtn.innerHTML;
+            addBtn.innerHTML = '✅ ¡Agregado al carrito!';
+            addBtn.classList.add('bg-green-500');
+            
+            setTimeout(() => {
+                addBtn.innerHTML = originalText;
+                addBtn.classList.remove('bg-green-500');
+            }, 2000);
+        }
+
+        function resetCurrentOrder() {
+            currentOrder = {
+                juice: '',
+                extras: [],
+                preparation: '',
+                sweetener: '',
+                size: '',
+                delivery: '',
+                payment: ''
+            };
+
+            // Reset UI
+            document.querySelectorAll('.juice-card, .prep-option, .sweet-option, .size-option').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            document.querySelectorAll('.extra-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+
             document.getElementById('extras-section').classList.add('hidden');
             document.getElementById('add-to-cart-section').classList.add('hidden');
             document.getElementById('order-summary').classList.add('hidden');
             
-            // Show a temporary message
-            alert('¡Producto agregado al carrito!');
+            if (document.getElementById('custom-name')) {
+                document.getElementById('custom-name').value = '';
+            }
+        }
+
+        function updateCartDisplay() {
+            document.getElementById('cart-count').textContent = cartCount;
             
-            // Scroll back to the top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            const cartItems = document.getElementById('cart-items');
+            const cartSummary = document.getElementById('cart-summary');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><div class="text-4xl mb-2">🛒</div><p>Tu carrito está vacío</p><p class="text-sm">¡Agrega algunos jugos deliciosos!</p></div>';
+                cartSummary.classList.add('hidden');
+            } else {
+                cartSummary.classList.remove('hidden');
+                
+                let cartHTML = '';
+                let subtotal = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    
+                    cartHTML += `
+                        <div class="border-b border-gray-200 pb-4 mb-4 last:border-b-0">
+                            <div class="flex justify-between items-start mb-2">
+                                <div class="flex-1 pr-2">
+                                    <h4 class="font-bold text-gray-800 mb-1">${item.name}</h4>
+                                    ${item.customName ? `<p class="text-xs text-purple-600 italic font-medium mb-1">✨ "${item.customName}"</p>` : ''}
+                                    <div class="text-xs text-gray-600 space-y-1">
+                                        <p>📏 Tamaño: ${item.size === '16oz' ? '16oz (Chico)' : '24oz (Grande)'}</p>
+                                        <p>🥤 Preparación: ${item.preparation}</p>
+                                        <p>🍯 Endulzante: ${item.sweetener}</p>
+                                        ${item.extras.length > 0 ? `<p>🌈 Extras: ${item.extras.join(', ')}</p>` : ''}
+                                    </div>
+                                </div>
+                                <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-1">
+                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-sm text-gray-600">Cantidad:</span>
+                                    <div class="flex items-center gap-2">
+                                        <button onclick="updateQuantity(${item.id}, -1)" class="bg-white hover:bg-gray-100 border border-gray-300 w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center">-</button>
+                                        <span class="text-sm font-bold min-w-[20px] text-center">${item.quantity}</span>
+                                        <button onclick="updateQuantity(${item.id}, 1)" class="bg-white hover:bg-gray-100 border border-gray-300 w-8 h-8 rounded-full text-sm font-bold flex items-center justify-center">+</button>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs text-gray-500">$${item.price} c/u</p>
+                                    <p class="font-bold text-green-600">$${itemTotal}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                cartItems.innerHTML = cartHTML;
+                
+                // Calcular envío según las reglas
+                const totalJuices = cart.reduce((total, item) => total + item.quantity, 0);
+                let shippingCost = 0;
+                let shippingText = '$0';
+                
+                if (currentOrder.delivery === 'domicilio') {
+                    if (totalJuices >= 3) {
+                        shippingCost = 0;
+                        shippingText = `$0 (¡GRATIS por ${totalJuices} jugos! 🎉)`;
+                    } else {
+                        shippingCost = 20;
+                        shippingText = `$${shippingCost}`;
+                    }
+                } else {
+                    shippingCost = 0;
+                    shippingText = '$0';
+                }
+                
+                const total = subtotal + shippingCost;
+                
+                document.getElementById('cart-subtotal').textContent = `$${subtotal}`;
+                document.getElementById('cart-shipping').innerHTML = shippingText;
+                document.getElementById('cart-total').textContent = `$${total}`;
+            }
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(item => item.id !== itemId);
+            cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cart.find(item => item.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(itemId);
+                } else {
+                    cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+                    updateCartDisplay();
+                }
+            }
         }
 
         function toggleCart() {
             const cartModal = document.getElementById('cart-modal');
-            if (cartModal.classList.contains('hidden')) {
-                renderCart();
-                cartModal.classList.remove('hidden');
-            } else {
-                cartModal.classList.add('hidden');
-            }
-        }
-
-        function renderCart() {
-            const cartItemsContainer = document.getElementById('cart-items');
-            const cartSummary = document.getElementById('cart-summary');
-            const emptyCart = document.getElementById('empty-cart');
-            
-            cartItemsContainer.innerHTML = '';
-            if (cart.length === 0) {
-                emptyCart.classList.remove('hidden');
-                cartSummary.classList.add('hidden');
-            } else {
-                emptyCart.classList.add('hidden');
-                cartSummary.classList.remove('hidden');
-                cart.forEach((item, index) => {
-                    const itemEl = document.createElement('div');
-                    itemEl.classList.add('flex', 'items-center', 'gap-3', 'p-2', 'bg-gray-50', 'rounded-xl', 'mb-2');
-                    
-                    const extrasList = item.extras.length > 0 ? `<p class="text-xs text-gray-500">Extras: ${item.extras.map(e => menuData.extras[e].name).join(', ')}</p>` : '';
-                    
-                    itemEl.innerHTML = `
-                        <div class="text-2xl">${menuData.juices[item.juice].emoji}</div>
-                        <div class="flex-1">
-                            <h4 class="font-bold text-sm">${item.customName || item.name}</h4>
-                            <p class="text-xs text-gray-500">${menuData.preps[item.preparation]}, ${menuData.sweets[item.sweetener]}</p>
-                            ${extrasList}
-                        </div>
-                        <div class="font-bold text-right">
-                            <p class="text-sm">$${item.price}</p>
-                        </div>
-                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 ml-2">&times;</button>
-                    `;
-                    cartItemsContainer.appendChild(itemEl);
-                });
-            }
-            updateCartTotal();
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            document.getElementById('cart-count').innerText = cart.length;
-            renderCart();
-        }
-
-        function updateCartTotal() {
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const shipping = (cart.length >= 3 || currentOrder.delivery !== 'domicilio') ? 0 : 20;
-            const total = subtotal + shipping;
-            
-            document.getElementById('cart-subtotal').innerText = `$${subtotal}`;
-            document.getElementById('cart-shipping').innerText = shipping === 0 ? 'Gratis' : `$${shipping}`;
-            document.getElementById('cart-total').innerText = `$${total}`;
+            cartModal.classList.toggle('hidden');
         }
 
         function proceedToCheckout() {
-            if (currentOrder.delivery === 'domicilio' && (!document.getElementById('colonia').value || !document.getElementById('calle').value || !document.getElementById('numero').value || !document.getElementById('telefono').value)) {
-                alert('Por favor, completa los datos de entrega.');
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío');
                 return;
             }
+            
+            // Hide cart and show delivery/payment options
             toggleCart();
-            renderFinalSummary();
-        }
-
-        function renderFinalSummary() {
-            const finalSummaryContainer = document.getElementById('final-summary-content');
-            finalSummaryContainer.innerHTML = '';
-
-            let summaryHtml = '';
             
-            // Items
-            summaryHtml += '<div class="mb-3">';
-            cart.forEach(item => {
-                const extrasText = item.extras.length > 0 ? ` + extras: ${item.extras.map(e => menuData.extras[e].name).join(', ')}` : '';
-                summaryHtml += `
-                    <p class="flex justify-between items-center text-sm mb-1">
-                        <span class="font-bold">${item.emoji} ${item.customName || item.name}</span>
-                        <span>$${item.price}</span>
-                    </p>
-                    <p class="text-xs italic mb-2">${menuData.preps[item.preparation]}, ${menuData.sweets[item.sweetener]}${extrasText}</p>
-                `;
-            });
-            summaryHtml += '</div>';
-
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const shipping = (cart.length >= 3 || currentOrder.delivery !== 'domicilio') ? 0 : 20;
-            const total = subtotal + shipping;
-
-            // Summary
-            summaryHtml += `
-                <div class="border-t border-white border-opacity-30 pt-3 space-y-2">
-                    <p class="flex justify-between text-sm"><span>Subtotal:</span><span>$${subtotal}</span></p>
-                    <p class="flex justify-between text-sm"><span>Envío:</span><span>${shipping === 0 ? 'Gratis' : `$${shipping}`}</span></p>
-                    <p class="flex justify-between font-bold text-lg"><span>TOTAL:</span><span>$${total}</span></p>
-                </div>
-                <div class="mt-3 border-t border-white border-opacity-30 pt-3 space-y-2 text-sm">
-                    <p class="flex justify-between"><span>Método de Entrega:</span><span>${menuData.deliveries[currentOrder.delivery]}</span></p>
-                    <p class="flex justify-between"><span>Método de Pago:</span><span>${menuData.payments[currentOrder.payment]}</span></p>
-                </div>
-            `;
-            
-            // Delivery details
-            if (currentOrder.delivery === 'domicilio') {
-                summaryHtml += `
-                    <div class="mt-3 border-t border-white border-opacity-30 pt-3 text-sm">
-                        <p class="font-bold">Dirección:</p>
-                        <p>${document.getElementById('calle').value} #${document.getElementById('numero').value}, ${document.getElementById('colonia').value}</p>
-                        <p class="mt-1 font-bold">Teléfono: <span class="font-normal">${document.getElementById('telefono').value}</span></p>
-                    </div>
-                `;
-            }
-
-            finalSummaryContainer.innerHTML = summaryHtml;
-            document.getElementById('order-summary').classList.remove('hidden');
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
-
-        function sendWhatsApp() {
-            let message = "Hola, me gustaría hacer un pedido:\n\n";
-
-            // Add each item from the cart
-            cart.forEach((item, index) => {
-                const extrasText = item.extras.length > 0 ? `\n   - Extras: ${item.extras.map(e => menuData.extras[e].name).join(', ')}` : '';
-                message += `${index + 1}. ${item.customName || item.name} ($${item.price})\n`;
-                message += `   - Preparación: ${menuData.preps[item.preparation]}${extrasText}\n`;
-                message += `   - Endulzante: ${menuData.sweets[item.sweetener]}\n`;
-                message += `   - Tamaño: ${menuData.sizes[item.size].name}\n`;
-                message += '\n';
-            });
-
-            // Calculate totals
-            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
-            const shipping = (cart.length >= 3 || currentOrder.delivery !== 'domicilio') ? 0 : 20;
-            const total = subtotal + shipping;
-
-            message += `--- Resumen ---\n`;
-            message += `Subtotal: $${subtotal}\n`;
-            message += `Envío: ${shipping === 0 ? 'Gratis' : `$${shipping}`}\n`;
-            message += `TOTAL: $${total}\n\n`;
-            message += `--- Datos de Entrega y Pago ---\n`;
-            message += `Método de Entrega: ${menuData.deliveries[currentOrder.delivery]}\n`;
-            if (currentOrder.delivery === 'domicilio') {
-                message += `Dirección: ${document.getElementById('calle').value}, #${document.getElementById('numero').value}, Col. ${document.getElementById('colonia').value}\n`;
-                if (document.getElementById('privada').value) message += `Privada: ${document.getElementById('privada').value}\n`;
-                if (document.getElementById('codigo').value) message += `Código de Acceso: ${document.getElementById('codigo').value}\n`;
-                message += `Teléfono: ${document.getElementById('telefono').value}\n`;
-            }
-            message += `Método de Pago: ${menuData.payments[currentOrder.payment]}\n`;
-
-            const whatsappUrl = `https://wa.me/526861234567?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        window.onload = function() {
-            // This is a placeholder for a non-alert message system
-            window.alert = function(msg) {
-                const alertBox = document.createElement('div');
-                alertBox.classList.add('fixed', 'bottom-4', 'left-1/2', '-translate-x-1/2', 'bg-green-500', 'text-white', 'px-6', 'py-3', 'rounded-full', 'shadow-lg', 'transition-all', 'duration-300', 'z-50', 'opacity-0', 'scale-90');
-                alertBox.innerText = msg;
-                document.body.appendChild(alertBox);
+            // Si ya hay entrega y pago seleccionados, mostrar resumen inmediatamente
+            if (currentOrder.delivery && currentOrder.payment) {
+                showCartCheckoutSummary();
+            } else {
+                // Scroll to delivery section
                 setTimeout(() => {
-                    alertBox.style.opacity = '1';
-                    alertBox.style.transform = 'translateY(0) translateX(-50%) scale(1)';
-                }, 10);
-                setTimeout(() => {
-                    alertBox.style.opacity = '0';
-                    alertBox.style.transform = 'translateY(20px) translateX(-50%) scale(0.9)';
-                    setTimeout(() => alertBox.remove(), 300);
-                }, 3000);
-            };
-        };
+                    const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
+                    for (let section of sections) {
+                        if (section.textContent.includes('Entrega')) {
+                            section.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                            break;
+                        }
+                    }
+                }, 100);
+            }
+        }
     </script>
 </body>
 </html>
