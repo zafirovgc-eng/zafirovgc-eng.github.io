@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FruitBox - Menú Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .juice-card, .prep-option, .sweet-option, .size-option, .delivery-option, .payment-option, .extra-item {
+            transition: all 0.3s ease;
+        }
+        .juice-card:hover, .prep-option:hover, .sweet-option:hover, .size-option:hover, .delivery-option:hover, .payment-option:hover, .extra-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .selected {
+            border: 4px solid #059669 !important;
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5) !important;
+            box-shadow: 0 0 0 2px #10b981, 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+            transform: scale(1.02) !important;
+        }
+        .pulse-animation { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-50 to-orange-50 min-h-screen">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-green-500 to-orange-500 text-white p-4 text-center sticky top-0 z-10 shadow-lg">
+        <h1 class="text-3xl font-bold mb-1">🍹 FruitBox</h1>
+        <p class="text-sm italic mt-1">Tu jugo, tu estilo, tu fruitbox!</p>
+        
+        <!-- Social Media Buttons -->
+        <div class="mt-3 flex gap-2 justify-center">
+            <a href="https://www.facebook.com/profile.php?id=" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-full text-xs font-medium transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+                Facebook
+            </a>
+            <a href="https://www.instagram.com/fruitbox_mxl/" target="_blank" class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-3 py-2 rounded-full text-xs font-medium transition-colors">
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                Instagram
+            </a>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-3 max-w-md">
+        <!-- Menú Principal -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <h2 class="text-2xl font-bold text-center mb-4 text-gray-800">🌟 Nuestros Jugos Especiales</h2>
+            
+            <div class="grid grid-cols-1 gap-3 mb-4">
+                <div id="juice-verde" class="juice-card bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('verde')">
+                    <div class="text-3xl">💚</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-green-800">Green Day</h3>
+                        <p class="text-green-700 text-xs">Piña, kale, apio, mango, nopal</p>
+                    </div>
+                    <div class="text-lg font-bold text-green-800">$45</div>
+                </div>
+
+                <div id="juice-naranja" class="juice-card bg-gradient-to-br from-orange-100 to-orange-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('naranja')">
+                    <div class="text-3xl">🧡</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-orange-800">AC/DCitrus</h3>
+                        <p class="text-orange-700 text-xs">Jugo de naranja natural con zanahoria opcional</p>
+                    </div>
+                    <div class="text-lg font-bold text-orange-800">$45</div>
+                </div>
+
+                <div id="juice-mango" class="juice-card bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('mango')">
+                    <div class="text-3xl">💛</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-yellow-800">Mango Van Gogh</h3>
+                        <p class="text-yellow-700 text-xs">Puro mango dulce</p>
+                    </div>
+                    <div class="text-lg font-bold text-yellow-800">$50</div>
+                </div>
+
+                <div id="juice-berries" class="juice-card bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('berries')">
+                    <div class="text-3xl">🍇</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-purple-800">Berryoncé</h3>
+                        <p class="text-purple-700 text-xs">Frambuesa, mora azul, zarzamora</p>
+                    </div>
+                    <div class="text-lg font-bold text-purple-800">$55</div>
+                </div>
+
+                <div id="juice-fresa" class="juice-card bg-gradient-to-br from-pink-100 to-pink-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('fresa')">
+                    <div class="text-3xl">❤️</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-pink-800">Adeleicious</h3>
+                        <p class="text-pink-700 text-xs">Licuado de fresa (con plátano opcional)</p>
+                    </div>
+                    <div class="text-lg font-bold text-pink-800">$50</div>
+                </div>
+
+                <div id="juice-personalizado" class="juice-card bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('personalizado')">
+                    <div class="text-3xl">⭐</div>
+                    <div class="flex-1">
+                        <h3 class="text-lg font-bold text-blue-800">¡Crea el Tuyo!</h3>
+                        <p class="text-blue-700 text-xs">Combina como quieras</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botón Ver Carrito -->
+            <div class="text-center">
+                <button onclick="toggleCart()" class="bg-gray-800 text-white px-6 py-2 rounded-full font-medium hover:bg-gray-700 transition-colors relative">
+                    🛒 Ver Carrito (<span id="cart-count">0</span>)
+                </button>
+            </div>
+        </div>
+
+        <!-- Carrito de Compras -->
+        <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[80vh] overflow-y-auto">
+                    <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                        <h3 class="text-xl font-bold text-gray-800">🛒 Tu Carrito</h3>
+                        <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+                    </div>
+                    
+                    <div id="cart-items" class="p-4">
+                        <div id="empty-cart" class="text-center py-8 text-gray-500">
+                            <div class="text-4xl mb-2">🛒</div>
+                            <p>Tu carrito está vacío</p>
+                            <p class="text-sm">¡Agrega algunos jugos deliciosos!</p>
+                        </div>
+                    </div>
+                    
+                    <div id="cart-summary" class="hidden border-t border-gray-200 p-4 bg-gray-50">
+                        <div class="space-y-2 mb-4">
+                            <div class="flex justify-between text-sm">
+                                <span>Subtotal:</span>
+                                <span id="cart-subtotal">$0</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span>Envío:</span>
+                                <span id="cart-shipping">$0</span>
+                            </div>
+                            <div class="flex justify-between font-bold text-lg border-t pt-2">
+                                <span>Total:</span>
+                                <span id="cart-total">$0</span>
+                            </div>
+                        </div>
+                        
+                        <button onclick="proceedToCheckout()" class="w-full bg-gradient-to-r from-green-500 to-orange-500 text-white font-bold py-3 rounded-xl hover:from-green-600 hover:to-orange-600 transition-colors">
+                            Proceder al Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Extras para Personalizar -->
+        <div id="extras-section" class="bg-white rounded-2xl shadow-xl p-4 mb-4 hidden">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">🌈 Crea el Tuyo</h3>
+            <p class="text-sm text-gray-600 mb-3">Selecciona al menos 3 frutas. El costo es de $60 e incluye hasta 3 ingredientes extras. Cada extra adicional tiene un costo de $10.</p>
+            <div class="grid grid-cols-3 gap-2">
+                <div id="extra-pepino" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('pepino')">
+                    <div class="text-xl mb-1">🥒</div>
+                    <div class="text-xs font-medium">Pepino</div>
+                </div>
+                <div id="extra-apio" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('apio')">
+                    <div class="text-xl mb-1">🥬</div>
+                    <div class="text-xs font-medium">Apio</div>
+                </div>
+                <div id="extra-fresa" class="extra-item bg-pink-100 p-2 rounded-lg text-center cursor-pointer hover:bg-pink-200" onclick="toggleExtra('fresa')">
+                    <div class="text-xl mb-1">🍓</div>
+                    <div class="text-xs font-medium">Fresa</div>
+                </div>
+                <div id="extra-platano" class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('platano')">
+                    <div class="text-xl mb-1">🍌</div>
+                    <div class="text-xs font-medium">Plátano</div>
+                </div>
+                <div id="extra-limon" class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('limon')">
+                    <div class="text-xl mb-1">🍋</div>
+                    <div class="text-xs font-medium">Limón</div>
+                </div>
+                <div id="extra-naranja" class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('naranja')">
+                    <div class="text-xl mb-1">🍊</div>
+                    <div class="text-xs font-medium">Naranja</div>
+                </div>
+                <div id="extra-papaya" class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('papaya')">
+                    <div class="text-xl mb-1">🧡</div>
+                    <div class="text-xs font-medium">Papaya</div>
+                </div>
+                <div id="extra-manzana" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('manzana')">
+                    <div class="text-xl mb-1">🍏</div>
+                    <div class="text-xs font-medium">Manzana</div>
+                </div>
+                <div id="extra-mango" class="extra-item bg-yellow-100 p-2 rounded-lg text-center cursor-pointer hover:bg-yellow-200" onclick="toggleExtra('mango')">
+                    <div class="text-xl mb-1">🥭</div>
+                    <div class="text-xs font-medium">Mango</div>
+                </div>
+                <div id="extra-berries" class="extra-item bg-purple-100 p-2 rounded-lg text-center cursor-pointer hover:bg-purple-200" onclick="toggleExtra('berries')">
+                    <div class="text-xl mb-1">🍇</div>
+                    <div class="text-xs font-medium">Berries</div>
+                </div>
+                <div id="extra-zanahoria" class="extra-item bg-orange-100 p-2 rounded-lg text-center cursor-pointer hover:bg-orange-200" onclick="toggleExtra('zanahoria')">
+                    <div class="text-xl mb-1">🥕</div>
+                    <div class="text-xs font-medium">Zanahoria</div>
+                </div>
+                <div id="extra-espinaca" class="extra-item bg-green-100 p-2 rounded-lg text-center cursor-pointer hover:bg-green-200" onclick="toggleExtra('espinaca')">
+                    <div class="text-xl mb-1">🥬</div>
+                    <div class="text-xs font-medium">Espinaca</div>
+                </div>
+                <div id="extra-betabel" class="extra-item bg-red-100 p-2 rounded-lg text-center cursor-pointer hover:bg-red-200" onclick="toggleExtra('betabel')">
+                    <div class="text-xl mb-1">🟣</div>
+                    <div class="text-xs font-medium">Betabel</div>
+                </div>
+            </div>
+            
+            <!-- Nombre tu estilo -->
+            <div class="mt-4 p-3 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg border-2 border-dashed border-purple-300">
+                <h4 class="text-lg font-bold text-purple-800 mb-2">✨ ¡Ponle nombre a tu estilo!</h4>
+                <p class="text-sm text-purple-700 mb-2">Si nos gusta mucho podría aparecer en el menú</p>
+                <input type="text" id="custom-name" placeholder="Ej: El Súper Verde de María" class="w-full p-2 border border-purple-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm">
+            </div>
+        </div>
+
+        <!-- Opciones de Preparación -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">🥤 Método de Preparación</h3>
+            <div class="grid grid-cols-1 gap-3">
+                <div id="prep-frapeado" class="prep-option bg-blue-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectPrep('frapeado')">
+                    <div class="text-2xl">🧊</div>
+                    <h4 class="font-bold">Frapeado</h4>
+                </div>
+                <div id="prep-natural" class="prep-option bg-green-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectPrep('natural')">
+                    <div class="text-2xl">🌿</div>
+                    <h4 class="font-bold">Natural</h4>
+                </div>
+                <div id="prep-rocas" class="prep-option bg-gray-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-gray-200 flex items-center gap-3" onclick="selectPrep('rocas')">
+                    <div class="text-2xl">🧊</div>
+                    <h4 class="font-bold">En las Rocas</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Endulzante -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">🍯 Endulzante</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div id="sweet-azucar" class="sweet-option bg-yellow-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-yellow-200" onclick="selectSweet('azucar')">
+                    <div class="text-xl mb-1 text-center">🍯</div>
+                    <h4 class="font-bold text-center text-sm">Azúcar</h4>
+                </div>
+                <div id="sweet-stevia" class="sweet-option bg-green-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200" onclick="selectSweet('stevia')">
+                    <div class="text-xl mb-1 text-center">🌿</div>
+                    <h4 class="font-bold text-center text-sm">Stevia</h4>
+                </div>
+                <div id="sweet-miel" class="sweet-option bg-amber-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-amber-200" onclick="selectSweet('miel')">
+                    <div class="text-xl mb-1 text-center">🍯</div>
+                    <h4 class="font-bold text-center text-sm">Miel Natural</h4>
+                </div>
+                <div id="sweet-sin" class="sweet-option bg-gray-100 p-3 rounded-xl cursor-pointer border-2 border-transparent hover:bg-gray-200" onclick="selectSweet('sin')">
+                    <div class="text-xl mb-1 text-center">🚫</div>
+                    <h4 class="font-bold text-center text-sm">Sin Azúcar</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tamaño -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">Tamaño</h3>
+            <div class="grid grid-cols-1 gap-3">
+                <div id="size-16oz" class="size-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectSize('16oz')">
+                    <div class="text-3xl">🥤</div>
+                    <div class="flex-1">
+                        <h4 class="font-bold">16oz - Chico</h4>
+                    </div>
+                </div>
+                <div id="size-24oz" class="size-option bg-purple-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-purple-200 flex items-center gap-3" onclick="selectSize('24oz')">
+                    <div class="text-3xl">🥤</div>
+                    <div class="flex-1 flex justify-between items-center">
+                        <h4 class="font-bold">24oz - Grande</h4>
+                        <span class="text-sm font-semibold text-purple-700">+$10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Método de Entrega -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">Entrega</h3>
+            <div class="grid grid-cols-1 gap-3">
+                <div id="delivery-tienda" class="delivery-option bg-green-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectDelivery('tienda')">
+                    <div class="text-3xl">🏪</div>
+                    <div class="flex-1">
+                        <h4 class="font-bold">Recoger en Tienda</h4>
+                        <p class="text-sm text-gray-600">Sin costo adicional</p>
+                    </div>
+                </div>
+                <div id="delivery-domicilio" class="delivery-option bg-orange-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-orange-200 flex items-center gap-3" onclick="selectDelivery('domicilio')">
+                    <div class="text-3xl">🚗</div>
+                    <div class="flex-1">
+                        <h4 class="font-bold">Envío a Domicilio</h4>
+                        <p class="text-sm text-gray-600">+$20 MXN (GRATIS con 3+ jugos)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Método de Pago -->
+        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">Método de Pago</h3>
+            <div class="grid grid-cols-1 gap-3">
+                <div id="payment-efectivo" class="payment-option bg-green-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-green-200 flex items-center gap-3" onclick="selectPayment('efectivo')">
+                    <div class="text-3xl">💵</div>
+                    <h4 class="font-bold">Efectivo</h4>
+                </div>
+                <div id="payment-transferencia" class="payment-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectPayment('transferencia')">
+                    <div class="text-3xl">💳</div>
+                    <h4 class="font-bold">Transferencia HSBC</h4>
+                </div>
+            </div>
+        </div>
+
+        <!-- Datos de Domicilio -->
+        <div id="delivery-form" class="bg-white rounded-2xl shadow-xl p-4 mb-4 hidden">
+            <h3 class="text-xl font-bold mb-3 text-gray-800">Datos de Entrega</h3>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Colonia</label>
+                    <input type="text" id="colonia" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Calle</label>
+                    <input type="text" id="calle" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Número Exterior</label>
+                    <input type="text" id="numero" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Privada (opcional)</label>
+                    <input type="text" id="privada" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Código de Acceso (opcional)</label>
+                    <input type="text" id="codigo" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+                    <input type="tel" id="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                </div>
+            </div>
+        </div>
+
+        <!-- Botón Agregar al Carrito -->
+        <div id="add-to-cart-section" class="hidden mb-4">
+            <button id="add-to-cart-btn" onclick="addToCart()" class="w-full bg-gradient-to-r from-green-500 to-orange-500 text-white font-bold py-4 px-6 rounded-xl hover:from-green-600 hover:to-orange-600 transition-colors shadow-lg text-lg">
+                🛒 Agregar al Carrito
+            </button>
+        </div>
+
+        <!-- Resumen del Pedido Individual -->
+        <div id="order-summary" class="bg-gradient-to-r from-green-500 to-orange-500 text-white rounded-2xl shadow-xl p-4 mb-4 hidden">
+            <h3 class="text-xl font-bold mb-3">Resumen de tu Pedido</h3>
+            <div id="final-summary-content"></div>
+            <button id="whatsapp-btn" onclick="sendWhatsApp()" class="w-full bg-white text-green-600 font-bold py-3 px-4 mt-4 rounded-xl hover:bg-gray-100 transition-colors pulse-animation text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-5 h-5 mr-2 -mt-1" viewBox="0 0 448 512" fill="currentColor">
+                    <path d="M380.9 97.1C339.7 54.9 281.5 32 224.1 32c-124.9 0-226 101.4-226 226.4 0 36.1 8.5 71.4 24.3 103.1L2.7 483.5c-3.1 9.4 6.7 18.2 15.1 14.8l105.7-43.1c31.1 15.6 65.1 23.6 100.2 23.6 124.9 0 226-101.4 226-226.4 0-53.7-18.1-104.9-50.9-145.9zM224.1 448c-29.7 0-58.1-8.7-82.7-25.2l-5.5-3.3-57.8 23.5 24.3-56.1-3.6-5.8C49.9 292.9 39 260.6 39 226.4c0-101.3 82.2-183.6 183.4-183.6 50.8 0 98.7 20.1 134.1 55.6s55.1 83.9 55.1 134.7c0 101.3-82.2 183.6-183.4 183.6zM337.3 322c-2.4-1.2-14.8-7.3-17.1-8.1-2.4-1.2-4.1-1.8-5.8 1.8-1.7 3.6-6.7 8.1-8.2 9.7-1.5 1.5-3 1.8-5.4.6-2.4-1.2-10.2-3.8-19.4-12-7.2-6.5-12-14.4-13.4-16.7-1.4-2.4-.1-3.6 1.2-4.8 1.1-1.1 2.4-2.4 3.6-3.8 1.2-1.2 1.5-2.4 1.8-3.6.6-1.2.3-2.4-.3-3.6-2.4-6-10.2-24.5-14-33.6-3.8-9.1-3.8-7.5-6.6-7.8-2.7-.3-5.8-.3-8.8-.3-2.4 0-5.8.6-8.8 3c-2.7 2.4-10.2 10.2-10.2 24.8 0 14.5 10.5 28.7 12 30.5 1.5 1.8 20.1 30.6 48.7 42.1 28.6 11.5 28.6 7.6 33.7 7.3 5.1-.3 14.8-6 16.9-12.2 2.1-6.1 2.1-11.2 1.5-12.2-.6-1.2-2.4-1.8-5.1-3z"/>
+                </svg>
+                Enviar Pedido por WhatsApp
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Data principal del menú
+        const menuData = {
+            juices: {
+                'verde': { name: 'Green Day', price: 45, emoji: '💚' },
+                'naranja': { name: 'AC/DCitrus', price: 45, emoji: '🧡' },
+                'mango': { name: 'Mango Van Gogh', price: 50, emoji: '💛' },
+                'berries': { name: 'Berryoncé', price: 55, emoji: '🍇' },
+                'fresa': { name: 'Adeleicious', price: 50, emoji: '❤️' },
+                'personalizado': { name: 'Jugo Personalizado', price: 50, emoji: '⭐' }
+            },
+            extras: {
+                'pepino': { name: 'Pepino', emoji: '🥒', price: 0 },
+                'apio': { name: 'Apio', emoji: '🥬', price: 0 },
+                'fresa': { name: 'Fresa', emoji: '🍓', price: 0 },
+                'platano': { name: 'Plátano', emoji: '🍌', price: 0 },
+                'limon': { name: 'Limón', emoji: '🍋', price: 0 },
+                'naranja': { name: 'Naranja', emoji: '🍊', price: 0 },
+                'papaya': { name: 'Papaya', emoji: '🧡', price: 0 },
+                'manzana': { name: 'Manzana', emoji: '🍏', price: 0 },
+                'mango': { name: 'Mango', emoji: '🥭', price: 0 },
+                'berries': { name: 'Berries', emoji: '🍇', price: 0 },
+                'zanahoria': { name: 'Zanahoria', emoji: '🥕', price: 0 },
+                'espinaca': { name: 'Espinaca', emoji: '🥬', price: 0 },
+                'betabel': { name: 'Betabel', emoji: '🟣', price: 0 }
+            },
+            sizes: {
+                '16oz': { name: '16oz - Chico', price: 0 },
+                '24oz': { name: '24oz - Grande', price: 10 }
+            },
+            preps: {
+                'frapeado': 'Frapeado',
+                'natural': 'Natural',
+                'rocas': 'En las Rocas'
+            },
+            sweets: {
+                'azucar': 'Azúcar',
+                'stevia': 'Stevia',
+                'miel': 'Miel Natural',
+                'sin': 'Sin Azúcar'
+            },
+            deliveries: {
+                'tienda': 'Recoger en Tienda',
+                'domicilio': 'Envío a Domicilio'
+            },
+            payments: {
+                'efectivo': 'Efectivo',
+                'transferencia': 'Transferencia HSBC'
+            }
+        };
+
+        // Estado de la aplicación
+        let currentOrder = {
+            juice: '',
+            name: '',
+            extras: [],
+            preparation: '',
+            sweetener: '',
+            size: '',
+            delivery: '',
+            payment: ''
+        };
+        let cart = [];
+
+        // Funciones de selección y UI
+        function selectOption(type, value) {
+            const container = document.getElementById(type + '-section') || document.body;
+            const elements = container.querySelectorAll(`.${type}-option`);
+            elements.forEach(el => el.classList.remove('selected'));
+            document.getElementById(type + '-' + value).classList.add('selected');
+        }
+
+        function selectJuice(juice) {
+            selectOption('juice', juice);
+            currentOrder = { ...currentOrder, juice, name: menuData.juices[juice].name, extras: [] };
+            
+            // Toggle visibility of extras section for custom juice
+            const extrasSection = document.getElementById('extras-section');
+            if (juice === 'personalizado') {
+                extrasSection.classList.remove('hidden');
+            } else {
+                extrasSection.classList.add('hidden');
+                // Reset selected extras
+                document.querySelectorAll('.extra-item').forEach(item => {
+                    item.classList.remove('selected');
+                });
+            }
+            showAddToCartButton();
+        }
+
+        function toggleExtra(extra) {
+            const index = currentOrder.extras.indexOf(extra);
+            const extraEl = document.getElementById('extra-' + extra);
+            
+            if (index > -1) {
+                currentOrder.extras.splice(index, 1);
+                extraEl.classList.remove('selected');
+            } else {
+                currentOrder.extras.push(extra);
+                extraEl.classList.add('selected');
+            }
+            showAddToCartButton();
+        }
+
+        function selectPrep(prep) {
+            selectOption('prep', prep);
+            currentOrder.preparation = prep;
+            showAddToCartButton();
+        }
+
+        function selectSweet(sweet) {
+            selectOption('sweet', sweet);
+            currentOrder.sweetener = sweet;
+            showAddToCartButton();
+        }
+
+        function selectSize(size) {
+            selectOption('size', size);
+            currentOrder.size = size;
+            showAddToCartButton();
+        }
+
+        function selectDelivery(delivery) {
+            selectOption('delivery', delivery);
+            currentOrder.delivery = delivery;
+            const deliveryForm = document.getElementById('delivery-form');
+            if (delivery === 'domicilio') {
+                deliveryForm.classList.remove('hidden');
+            } else {
+                deliveryForm.classList.add('hidden');
+            }
+        }
+
+        function selectPayment(payment) {
+            selectOption('payment', payment);
+            currentOrder.payment = payment;
+        }
+
+        function showAddToCartButton() {
+            const hasJuice = currentOrder.juice !== '';
+            const hasPrep = currentOrder.preparation !== '';
+            const hasSweet = currentOrder.sweetener !== '';
+            const hasSize = currentOrder.size !== '';
+
+            const isCustom = currentOrder.juice === 'personalizado';
+            const hasEnoughExtras = !isCustom || (isCustom && currentOrder.extras.length >= 3);
+
+            const addToCartSection = document.getElementById('add-to-cart-section');
+            if (hasJuice && hasPrep && hasSweet && hasSize && hasEnoughExtras) {
+                addToCartSection.classList.remove('hidden');
+            } else {
+                addToCartSection.classList.add('hidden');
+            }
+        }
+
+        function calculatePrice(order) {
+            let price = menuData.juices[order.juice].price;
+            if (order.juice === 'personalizado') {
+                const extraCount = order.extras.length;
+                if (extraCount > 3) {
+                    price += (extraCount - 3) * 10;
+                }
+            }
+            price += menuData.sizes[order.size].price;
+            return price;
+        }
+
+        function addToCart() {
+            const finalOrder = {
+                ...currentOrder,
+                price: calculatePrice(currentOrder),
+                customName: document.getElementById('custom-name').value
+            };
+            cart.push(finalOrder);
+            document.getElementById('cart-count').innerText = cart.length;
+            
+            // Reset state
+            currentOrder = { juice: '', name: '', extras: [], preparation: '', sweetener: '', size: '', delivery: '', payment: '' };
+            document.getElementById('custom-name').value = '';
+            document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+            document.getElementById('extras-section').classList.add('hidden');
+            document.getElementById('add-to-cart-section').classList.add('hidden');
+            document.getElementById('order-summary').classList.add('hidden');
+            
+            // Show a temporary message
+            alert('¡Producto agregado al carrito!');
+            
+            // Scroll back to the top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleCart() {
+            const cartModal = document.getElementById('cart-modal');
+            if (cartModal.classList.contains('hidden')) {
+                renderCart();
+                cartModal.classList.remove('hidden');
+            } else {
+                cartModal.classList.add('hidden');
+            }
+        }
+
+        function renderCart() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartSummary = document.getElementById('cart-summary');
+            const emptyCart = document.getElementById('empty-cart');
+            
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                emptyCart.classList.remove('hidden');
+                cartSummary.classList.add('hidden');
+            } else {
+                emptyCart.classList.add('hidden');
+                cartSummary.classList.remove('hidden');
+                cart.forEach((item, index) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.classList.add('flex', 'items-center', 'gap-3', 'p-2', 'bg-gray-50', 'rounded-xl', 'mb-2');
+                    
+                    const extrasList = item.extras.length > 0 ? `<p class="text-xs text-gray-500">Extras: ${item.extras.map(e => menuData.extras[e].name).join(', ')}</p>` : '';
+                    
+                    itemEl.innerHTML = `
+                        <div class="text-2xl">${menuData.juices[item.juice].emoji}</div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-sm">${item.customName || item.name}</h4>
+                            <p class="text-xs text-gray-500">${menuData.preps[item.preparation]}, ${menuData.sweets[item.sweetener]}</p>
+                            ${extrasList}
+                        </div>
+                        <div class="font-bold text-right">
+                            <p class="text-sm">$${item.price}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 ml-2">&times;</button>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+            updateCartTotal();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            document.getElementById('cart-count').innerText = cart.length;
+            renderCart();
+        }
+
+        function updateCartTotal() {
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = (cart.length >= 3 || currentOrder.delivery !== 'domicilio') ? 0 : 20;
+            const total = subtotal + shipping;
+            
+            document.getElementById('cart-subtotal').innerText = `$${subtotal}`;
+            document.getElementById('cart-shipping').innerText = shipping === 0 ? 'Gratis' : `$${shipping}`;
+            document.getElementById('cart-total').innerText = `$${total}`;
+        }
+
+        function proceedToCheckout() {
+            if (currentOrder.delivery === 'domicilio' && (!document.getElementById('colonia').value || !document.getElementById('calle').value || !document.getElementById('numero').value || !document.getElementById('telefono').value)) {
+                alert('Por favor, completa los datos de entrega.');
+                return;
+            }
+            toggleCart();
+            renderFinalSummary();
+        }
+
+        function renderFinalSummary() {
+            const finalSummaryContainer = document.getElementById('final-summary-content');
+            finalSummaryContainer.innerHTML = '';
+
+            let summaryHtml = '';
+            
+            // Items
+            summaryHtml += '<div class="mb-3">';
+            cart.forEach(item => {
+                const extrasText = item.extras.length > 0 ? ` + extras: ${item.extras.map(e => menuData.extras[e].name).join(', ')}` : '';
+                summaryHtml += `
+                    <p class="flex justify-between items-center text-sm mb-1">
+                        <span class="font-bold">${item.emoji} ${item.customName || item.name}</span>
+                        <span>$${item.price}</span>
+                    </p>
+                    <p class="text-xs italic mb-2">${menuData.preps[item.preparation]}, ${menuData.sweets[item.sweetener]}${extrasText}</p>
+                `;
+            });
+            summaryHtml += '</div>';
+
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = (cart.length >= 3 || currentOrder.delivery !== 'domicilio') ? 0 : 20;
+            const total = subtotal + shipping;
+
+            // Summary
+            summaryHtml += `
+                <div class="border-t border-white border-opacity-30 pt-3 space-y-2">
+                    <p class="flex justify-between text-sm"><span>Subtotal:</span><span>$${subtotal}</span></p>
+                    <p class="flex justify-between text-sm"><span>Envío:</span><span>${shipping === 0 ? 'Gratis' : `$${shipping}`}</span></p>
+                    <p class="flex justify-between font-bold text-lg"><span>TOTAL:</span><span>$${total}</span></p>
+                </div>
+                <div class="mt-3 border-t border-white border-opacity-30 pt-3 space-y-2 text-sm">
+                    <p class="flex justify-between"><span>Método de Entrega:</span><span>${menuData.deliveries[currentOrder.delivery]}</span></p>
+                    <p class="flex justify-between"><span>Método de Pago:</span><span>${menuData.payments[currentOrder.payment]}</span></p>
+                </div>
+            `;
+            
+            // Delivery details
+            if (currentOrder.delivery === 'domicilio') {
+                summaryHtml += `
+                    <div class="mt-3 border-t border-white border-opacity-30 pt-3 text-sm">
+                        <p class="font-bold">Dirección:</p>
+                        <p>${document.getElementById('calle').value} #${document.getElementById('numero').value}, ${document.getElementById('colonia').value}</p>
+                        <p class="mt-1 font-bold">Teléfono: <span class="font-normal">${document.getElementById('telefono').value}</span></p>
+                    </div>
+                `;
+            }
+
+            finalSummaryContainer.innerHTML = summaryHtml;
+            document.getElementById('order-summary').classList.remove('hidden');
+            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        }
+
+        function sendWhatsApp() {
+            let message = "Hola, me gustaría hacer un pedido:\n\n";
+
+            // Add each item from the cart
+            cart.forEach((item, index) => {
+                const extrasText = item.extras.length > 0 ? `\n   - Extras: ${item.extras.map(e => menuData.extras[e].name).join(', ')}` : '';
+                message += `${index + 1}. ${item.customName || item.name} ($${item.price})\n`;
+                message += `   - Preparación: ${menuData.preps[item.preparation]}${extrasText}\n`;
+                message += `   - Endulzante: ${menuData.sweets[item.sweetener]}\n`;
+                message += `   - Tamaño: ${menuData.sizes[item.size].name}\n`;
+                message += '\n';
+            });
+
+            // Calculate totals
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            const shipping = (cart.length >= 3 || currentOrder.delivery !== 'domicilio') ? 0 : 20;
+            const total = subtotal + shipping;
+
+            message += `--- Resumen ---\n`;
+            message += `Subtotal: $${subtotal}\n`;
+            message += `Envío: ${shipping === 0 ? 'Gratis' : `$${shipping}`}\n`;
+            message += `TOTAL: $${total}\n\n`;
+            message += `--- Datos de Entrega y Pago ---\n`;
+            message += `Método de Entrega: ${menuData.deliveries[currentOrder.delivery]}\n`;
+            if (currentOrder.delivery === 'domicilio') {
+                message += `Dirección: ${document.getElementById('calle').value}, #${document.getElementById('numero').value}, Col. ${document.getElementById('colonia').value}\n`;
+                if (document.getElementById('privada').value) message += `Privada: ${document.getElementById('privada').value}\n`;
+                if (document.getElementById('codigo').value) message += `Código de Acceso: ${document.getElementById('codigo').value}\n`;
+                message += `Teléfono: ${document.getElementById('telefono').value}\n`;
+            }
+            message += `Método de Pago: ${menuData.payments[currentOrder.payment]}\n`;
+
+            const whatsappUrl = `https://wa.me/526861234567?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        window.onload = function() {
+            // This is a placeholder for a non-alert message system
+            window.alert = function(msg) {
+                const alertBox = document.createElement('div');
+                alertBox.classList.add('fixed', 'bottom-4', 'left-1/2', '-translate-x-1/2', 'bg-green-500', 'text-white', 'px-6', 'py-3', 'rounded-full', 'shadow-lg', 'transition-all', 'duration-300', 'z-50', 'opacity-0', 'scale-90');
+                alertBox.innerText = msg;
+                document.body.appendChild(alertBox);
+                setTimeout(() => {
+                    alertBox.style.opacity = '1';
+                    alertBox.style.transform = 'translateY(0) translateX(-50%) scale(1)';
+                }, 10);
+                setTimeout(() => {
+                    alertBox.style.opacity = '0';
+                    alertBox.style.transform = 'translateY(20px) translateX(-50%) scale(0.9)';
+                    setTimeout(() => alertBox.remove(), 300);
+                }, 3000);
+            };
+        };
+    </script>
+</body>
+</html>
