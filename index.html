@@ -32,6 +32,12 @@
             30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
             40%, 60% { transform: translate3d(4px, 0, 0); }
         }
+        .size-selector.active-size {
+            background: #10b981;
+            color: white !important;
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-green-50 to-orange-50 min-h-screen">
@@ -70,56 +76,112 @@
             <h2 class="text-2xl font-bold text-center mb-4 text-gray-800">🌟 Nuestros Jugos Especiales</h2>
             
             <div class="grid grid-cols-1 gap-3 mb-4">
-                <div class="juice-card bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('verde')">
-                    <div class="text-3xl">💚</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-green-800">Green Day</h3>
-                        <p class="text-green-700 text-xs">Piña, kale, apio, mango, nopal</p>
+                <!-- Green Day -->
+                <div class="juice-card bg-gradient-to-br from-green-100 to-green-200 p-3 rounded-xl border-2 border-transparent flex flex-col gap-2">
+                    <div class="flex items-center gap-3 w-full">
+                        <div class="text-3xl">💚</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-green-800">Green Day</h3>
+                            <p class="text-green-700 text-xs">Piña, kale, apio, mango, nopal</p>
+                        </div>
                     </div>
-                    <div class="text-lg font-bold text-green-800">$55</div>
-                </div>
-
-                <div class="juice-card bg-gradient-to-br from-orange-100 to-orange-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('naranja')">
-                    <div class="text-3xl">🧡</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-orange-800">AC/DCitrus</h3>
-                        <p class="text-orange-700 text-xs">Jugo de naranja natural con zanahoria opcional</p>
+                    <div class="flex gap-2 justify-end w-full">
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-green-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('verde', '16oz', event)">
+                            Chico <span class="font-normal">$55</span>
+                        </button>
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-green-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('verde', '24oz', event)">
+                            Grande <span class="font-normal">$65</span>
+                        </button>
                     </div>
-                    <div class="text-lg font-bold text-orange-800">$55</div>
                 </div>
-
-                <div class="juice-card bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('mango')">
-                    <div class="text-3xl">💛</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-yellow-800">Mango Van Gogh</h3>
-                        <p class="text-yellow-700 text-xs">Puro mango dulce</p>
+                <!-- AC/DCitrus -->
+                <div class="juice-card bg-gradient-to-br from-orange-100 to-orange-200 p-3 rounded-xl border-2 border-transparent flex flex-col gap-2">
+                    <div class="flex items-center gap-3 w-full">
+                        <div class="text-3xl">🧡</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-orange-800">AC/DCitrus</h3>
+                            <p class="text-orange-700 text-xs">Jugo de naranja natural (zanahoria opcional)</p>
+                        </div>
                     </div>
-                    <div class="text-lg font-bold text-yellow-800">$60</div>
-                </div>
-
-                <div class="juice-card bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('berries')">
-                    <div class="text-3xl">🍇</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-purple-800">Berryoncé</h3>
-                        <p class="text-purple-700 text-xs">Frambuesa, mora azul, zarzamora</p>
+                    <div class="flex gap-2 justify-end w-full">
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-orange-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('naranja', '16oz', event)">
+                            Chico <span class="font-normal">$55</span>
+                        </button>
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-orange-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('naranja', '24oz', event)">
+                            Grande <span class="font-normal">$65</span>
+                        </button>
                     </div>
-                    <div class="text-lg font-bold text-purple-800">$65</div>
                 </div>
-
-                <div class="juice-card bg-gradient-to-br from-pink-100 to-pink-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('fresa')">
-                    <div class="text-3xl">❤️</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-pink-800">Adeleicious</h3>
-                        <p class="text-pink-700 text-xs">Licuado de fresa (con plátano opcional)</p>
+                <!-- Mango Van Gogh -->
+                <div class="juice-card bg-gradient-to-br from-yellow-100 to-yellow-200 p-3 rounded-xl border-2 border-transparent flex flex-col gap-2">
+                    <div class="flex items-center gap-3 w-full">
+                        <div class="text-3xl">💛</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-yellow-800">Mango Van Gogh</h3>
+                            <p class="text-yellow-700 text-xs">Puro mango dulce</p>
+                        </div>
                     </div>
-                    <div class="text-lg font-bold text-pink-800">$60</div>
+                    <div class="flex gap-2 justify-end w-full">
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-yellow-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('mango', '16oz', event)">
+                            Chico <span class="font-normal">$60</span>
+                        </button>
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-yellow-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('mango', '24oz', event)">
+                            Grande <span class="font-normal">$70</span>
+                        </button>
+                    </div>
                 </div>
-
-                <div class="juice-card bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl cursor-pointer border-2 border-transparent flex items-center gap-3" onclick="selectJuice('personalizado')">
-                    <div class="text-3xl">⭐</div>
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold text-blue-800">¡Crea el Tuyo!</h3>
-                        <p class="text-blue-700 text-xs">Combina como quieras</p>
+                <!-- Berryoncé -->
+                <div class="juice-card bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl border-2 border-transparent flex flex-col gap-2">
+                    <div class="flex items-center gap-3 w-full">
+                        <div class="text-3xl">🍇</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-purple-800">Berryoncé</h3>
+                            <p class="text-purple-700 text-xs">Frambuesa, mora azul, zarzamora</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 justify-end w-full">
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-purple-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('berries', '16oz', event)">
+                            Chico <span class="font-normal">$65</span>
+                        </button>
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-purple-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('berries', '24oz', event)">
+                            Grande <span class="font-normal">$75</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Adeleicious -->
+                <div class="juice-card bg-gradient-to-br from-pink-100 to-pink-200 p-3 rounded-xl border-2 border-transparent flex flex-col gap-2">
+                    <div class="flex items-center gap-3 w-full">
+                        <div class="text-3xl">❤️</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-pink-800">Adeleicious</h3>
+                            <p class="text-pink-700 text-xs">Licuado de fresa (con plátano opcional)</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-2 justify-end w-full">
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-pink-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('fresa', '16oz', event)">
+                            Chico <span class="font-normal">$60</span>
+                        </button>
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-pink-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('fresa', '24oz', event)">
+                            Grande <span class="font-normal">$70</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- ¡Crea el Tuyo! -->
+                <div class="juice-card bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl border-2 border-transparent flex flex-col gap-2">
+                    <div class="flex items-center gap-3 w-full">
+                        <div class="text-3xl">⭐</div>
+                        <div class="flex-1">
+                            <h3 class="text-lg font-bold text-blue-800">¡Crea el Tuyo!</h3>
+                            <p class="text-blue-700 text-xs">Combina como quieras</p>
+                        </div>
+                    </div>
+                     <div class="flex gap-2 justify-end w-full">
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-blue-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('personalizado', '16oz', event)">
+                            Chico
+                        </button>
+                        <button class="size-selector bg-white/50 hover:bg-white/80 text-blue-800 font-bold py-1 px-3 rounded-lg text-sm transition-colors" onclick="selectJuiceAndSize('personalizado', '24oz', event)">
+                            Grande
+                        </button>
                     </div>
                 </div>
             </div>
@@ -329,26 +391,6 @@
             </div>
         </div>
 
-        <!-- Tamaño -->
-        <div class="bg-white rounded-2xl shadow-xl p-4 mb-4">
-            <h3 class="text-xl font-bold mb-3 text-gray-800">Tamaño</h3>
-            <div class="grid grid-cols-1 gap-3">
-                <div class="size-option bg-blue-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-blue-200 flex items-center gap-3" onclick="selectSize('16oz')">
-                    <div class="text-3xl">🥤</div>
-                    <div class="flex-1">
-                        <h4 class="font-bold">16oz - Chico</h4>
-                    </div>
-                </div>
-                <div class="size-option bg-purple-100 p-4 rounded-xl cursor-pointer border-2 border-transparent hover:bg-purple-200 flex items-center gap-3" onclick="selectSize('24oz')">
-                    <div class="text-3xl">🥤</div>
-                    <div class="flex-1">
-                        <h4 class="font-bold">24oz - Grande</h4>
-                         <p class="text-sm text-gray-600">+$10 MXN</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Botón Agregar al Carrito -->
         <div id="add-to-cart-section" class="hidden mb-4">
             <div class="flex gap-2">
@@ -403,15 +445,15 @@
             <div class="space-y-3">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Colonia</label>
-                    <input type="text" id="colonia" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="checkAndEnableWhatsapp()">
+                    <input type="text" id="colonia" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Calle</label>
-                    <input type="text" id="calle" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="checkAndEnableWhatsapp()">
+                    <input type="text" id="calle" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Número Exterior</label>
-                    <input type="text" id="numero" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="checkAndEnableWhatsapp()">
+                    <input type="text" id="numero" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Privada (opcional)</label>
@@ -423,7 +465,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
-                    <input type="tel" id="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="checkAndEnableWhatsapp()">
+                    <input type="tel" id="telefono" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" oninput="updateOrderSummary()">
                 </div>
             </div>
         </div>
@@ -456,12 +498,12 @@
         let selectedPayment = null;
         
         const juicePrices = {
-            'verde': 55,
-            'naranja': 55,
-            'mango': 60,
-            'berries': 65,
-            'fresa': 60,
-            'personalizado': 60
+            'verde': { '16oz': 55, '24oz': 65 },
+            'naranja': { '16oz': 55, '24oz': 65 },
+            'mango': { '16oz': 60, '24oz': 70 },
+            'berries': { '16oz': 65, '24oz': 75 },
+            'fresa': { '16oz': 60, '24oz': 70 },
+            'personalizado': { '16oz': 60, '24oz': 70 } // Base price
         };
 
         const juiceNames = {
@@ -471,15 +513,6 @@
             'berries': 'Berryoncé',
             'fresa': 'Adeleicious',
             'personalizado': 'Jugo Personalizado'
-        };
-
-        const juiceImages = {
-            'verde': '🥬',
-            'naranja': '🍊',
-            'mango': '🥭',
-            'berries': '🍇',
-            'fresa': '🍓',
-            'personalizado': '🎨'
         };
         
         function showModal(icon, text) {
@@ -500,12 +533,14 @@
                 sweetener: '',
                 size: ''
             };
-            document.querySelectorAll('.juice-card, .prep-option, .sweet-option, .size-option').forEach(item => {
+            document.querySelectorAll('.juice-card, .prep-option, .sweet-option').forEach(item => {
                 item.classList.remove('selected');
             });
+            document.querySelectorAll('.size-selector').forEach(btn => btn.classList.remove('active-size'));
             document.querySelectorAll('.extra-item').forEach(item => {
                 item.classList.remove('selected');
             });
+
             document.getElementById('extras-section').classList.add('hidden');
             document.getElementById('add-to-cart-section').classList.add('hidden');
             document.getElementById('custom-name').value = '';
@@ -515,30 +550,30 @@
             document.getElementById('cart-count').textContent = cart.length;
         }
 
-        function selectJuice(juice) {
-            document.querySelectorAll('.juice-card').forEach(card => {
-                card.classList.remove('selected');
-            });
-            event.target.closest('.juice-card').classList.add('selected');
-            currentOrder.juice = juice;
+        function selectJuiceAndSize(juice, size, event) {
+            // Deselect all cards and buttons first
+            document.querySelectorAll('.juice-card').forEach(card => card.classList.remove('selected'));
+            document.querySelectorAll('.size-selector').forEach(btn => btn.classList.remove('active-size'));
+
+            const button = event.target.closest('.size-selector');
+            const card = button.closest('.juice-card');
             
+            card.classList.add('selected');
+            button.classList.add('active-size');
+
+            currentOrder.juice = juice;
+            currentOrder.size = size;
+            
+            const extrasSection = document.getElementById('extras-section');
             if (juice === 'personalizado') {
-                document.getElementById('extras-section').classList.remove('hidden');
-                setTimeout(() => {
-                    const extrasSection = document.getElementById('extras-section');
-                    if (extrasSection) {
-                        extrasSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                }, 100);
+                extrasSection.classList.remove('hidden');
+                setTimeout(() => extrasSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
             } else {
-                document.getElementById('extras-section').classList.add('hidden');
+                extrasSection.classList.add('hidden');
                 currentOrder.extras = [];
-                document.querySelectorAll('.extra-item').forEach(item => {
-                    item.classList.remove('selected');
-                });
+                document.querySelectorAll('.extra-item.selected').forEach(item => item.classList.remove('selected'));
                 setTimeout(() => {
-                    const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
-                    const prepSection = Array.from(sections).find(section => section.querySelector('h3') && section.querySelector('h3').textContent.includes('Método de Preparación'));
+                    const prepSection = Array.from(document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl')).find(section => section.querySelector('h3')?.textContent.includes('Método de Preparación'));
                     if (prepSection) {
                         prepSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
@@ -574,8 +609,7 @@
             event.target.closest('.prep-option').classList.add('selected');
             currentOrder.preparation = prep;
             setTimeout(() => {
-                const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
-                const sweetSection = Array.from(sections).find(section => section.querySelector('h3') && section.querySelector('h3').textContent.includes('Endulzante'));
+                const sweetSection = Array.from(document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl')).find(section => section.querySelector('h3')?.textContent.includes('Endulzante'));
                 if (sweetSection) {
                     sweetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
@@ -590,21 +624,11 @@
             event.target.closest('.sweet-option').classList.add('selected');
             currentOrder.sweetener = sweet;
             setTimeout(() => {
-                const sections = document.querySelectorAll('.bg-white.rounded-2xl.shadow-xl');
-                const sizeSection = Array.from(sections).find(section => section.querySelector('h3') && section.querySelector('h3').textContent.includes('Tamaño'));
-                if (sizeSection) {
-                    sizeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const addToCartSection = document.getElementById('add-to-cart-section');
+                if (addToCartSection) {
+                    addToCartSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             }, 100);
-            showAddToCartButton();
-        }
-
-        function selectSize(size) {
-            document.querySelectorAll('.size-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            event.target.closest('.size-option').classList.add('selected');
-            currentOrder.size = size;
             showAddToCartButton();
         }
         
@@ -615,12 +639,11 @@
             
             if (delivery === 'domicilio') {
                 document.getElementById('delivery-form').classList.remove('hidden');
-                // No scroll here to avoid jumping. The user will scroll naturally.
             } else {
                 document.getElementById('delivery-form').classList.add('hidden');
             }
             updateCartDisplay();
-            showFinalOrderSummary();
+            updateOrderSummary();
         }
 
         function selectPayment(payment) {
@@ -628,7 +651,11 @@
             event.target.closest('.payment-option').classList.add('selected');
             selectedPayment = payment;
             updateCartDisplay();
-            showFinalOrderSummary();
+            updateOrderSummary();
+             const summarySection = document.getElementById('order-summary');
+            if (summarySection) {
+                summarySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
         function addToCartAndPrompt() {
@@ -637,10 +664,7 @@
                 return;
             }
 
-            let price = juicePrices[currentOrder.juice] || 60;
-            if (currentOrder.size === '24oz') {
-                price += 10;
-            }
+            let price = juicePrices[currentOrder.juice][currentOrder.size];
             if (currentOrder.extras.length > 3) {
                 price += (currentOrder.extras.length - 3) * 5;
             }
@@ -693,99 +717,100 @@
             }, 100);
         }
 
-        function checkAndEnableWhatsapp() {
-            showFinalOrderSummary();
-        }
-        
         function sendWhatsApp() {
-            let message = `🍹 ¡Hola! Quiero hacer un pedido de FruitBox\n\n`;
-            
-            if (cart.length === 0) {
-                showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
-                return;
-            }
-
-            let subtotal = 0;
-            message += `🛒 MI PEDIDO (${cart.length} productos):\n\n`;
-            
-            cart.forEach((item, index) => {
-                subtotal += item.price;
-                message += `${index + 1}. ${item.name}\n`;
-                if (item.customName) {
-                    message += `   ✨ "${item.customName}"\n`;
-                }
-                message += `   📏 Tamaño: ${item.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-                message += `   🥤 Preparación: ${item.preparation}\n`;
-                message += `   🍯 Endulzante: ${item.sweetener}\n`;
-                if (item.extras.length > 0) {
-                    message += `   🌈 Extras: ${item.extras.join(', ')}\n`;
-                }
-                message += `   💰 Precio: $${item.price} MXN\n\n`;
-            });
-            
-            let finalTotal = subtotal;
-            
-            message += `💰 RESUMEN:\n`;
-            message += `   Subtotal: $${subtotal} MXN\n`;
-            
-            if (selectedDelivery === 'domicilio') {
-                message += `   Envío: Puede variar de acuerdo a la ubicación\n`;
-                message += `   🎯 TOTAL: Pendiente de confirmación\n\n`;
-            } else { // 'tienda'
-                message += `   Envío: $0 MXN\n`;
-                message += `   🎯 TOTAL: $${finalTotal} MXN\n\n`;
-            }
-            
-            if (!selectedPayment) {
-                 showModal('⚠️', 'Por favor, selecciona un método de pago.');
-                 return;
-            }
-            message += `💳 Método de pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n\n`;
-            
-            // --- Se ha corregido la lógica para la información de envío. ---
-            if (selectedDelivery === 'domicilio') {
-                const colonia = document.getElementById('colonia').value;
-                const calle = document.getElementById('calle').value;
-                const numero = document.getElementById('numero').value;
-                const privada = document.getElementById('privada').value;
-                const codigo = document.getElementById('codigo').value;
-                const telefono = document.getElementById('telefono').value;
-
-                if (!colonia || !calle || !numero || !telefono) {
-                    showModal('⚠️', 'Por favor, complete los datos de domicilio.');
+            return new Promise((resolve, reject) => {
+                let message = `🍹 ¡Hola! Quiero hacer un pedido de FruitBox\n\n`;
+                
+                if (cart.length === 0) {
+                    showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
+                    reject('Carrito vacío');
                     return;
                 }
 
-                message += `🚗 ENVÍO A DOMICILIO:\n`;
-                message += `🏘️ Colonia: ${colonia}\n`;
-                message += `🛣️ Calle: ${calle}\n`;
-                message += `🏠 Número exterior: ${numero}\n`;
-                if (privada) message += `🏘️ Privada: ${privada}\n`;
-                if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
-                message += `📱 Teléfono: ${telefono}\n\n`;
-
-                if (selectedPayment === 'transferencia') {
-                    message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
-                    message += `🏦 Banco: HSBC\n`;
-                    message += `👤 Titular: Alan Stephen Vega Chacon\n`;
-                    message += `💰 Monto a transferir: $${finalTotal} MXN\n\n`;
-                    message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
+                let subtotal = 0;
+                message += `🛒 MI PEDIDO (${cart.length} productos):\n\n`;
+                
+                cart.forEach((item, index) => {
+                    subtotal += item.price;
+                    message += `${index + 1}. ${item.name}\n`;
+                    if (item.customName) {
+                        message += `   ✨ "${item.customName}"\n`;
+                    }
+                    message += `   📏 Tamaño: ${item.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
+                    message += `   🥤 Preparación: ${item.preparation}\n`;
+                    message += `   🍯 Endulzante: ${item.sweetener}\n`;
+                    if (item.extras.length > 0) {
+                        message += `   🌈 Extras: ${item.extras.join(', ')}\n`;
+                    }
+                    message += `   💰 Precio: $${item.price} MXN\n\n`;
+                });
+                
+                let finalTotal = subtotal;
+                
+                message += `💰 RESUMEN:\n`;
+                message += `   Subtotal: $${subtotal} MXN\n`;
+                
+                if (selectedDelivery === 'domicilio') {
+                    message += `   Envío: Puede variar de acuerdo a la ubicación\n`;
+                    message += `   🎯 TOTAL: Pendiente de confirmación\n\n`;
+                } else { // 'tienda'
+                    message += `   Envío: $0 MXN\n`;
+                    message += `   🎯 TOTAL: $${finalTotal} MXN\n\n`;
                 }
-            } else { // 'tienda'
-                message += `🏪 RECOGER EN TIENDA:\n\n`;
-                message += `📍 Dirección del negocio:\n`;
-                message += `🛣️ Calle: Saavedra\n`;
-                message += `🏠 Número exterior: 1213\n`;
-                message += `🏘️ Privada: Benavente\n`;
-                message += `🔑 Código de acceso: 297822#\n`;
-                message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
-                message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-            }
+                
+                if (!selectedPayment) {
+                     showModal('⚠️', 'Por favor, selecciona un método de pago.');
+                     reject('Método de pago no seleccionado');
+                     return;
+                }
+                message += `💳 Método de pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n\n`;
+                
+                if (selectedDelivery === 'domicilio') {
+                    const colonia = document.getElementById('colonia').value;
+                    const calle = document.getElementById('calle').value;
+                    const numero = document.getElementById('numero').value;
+                    const privada = document.getElementById('privada').value;
+                    const codigo = document.getElementById('codigo').value;
+                    const telefono = document.getElementById('telefono').value;
 
-            message += `🍹✨ ¡Tu jugo, tu estilo, tu fruitbox! ✨🍹`;
+                    if (!colonia || !calle || !numero || !telefono) {
+                        showModal('⚠️', 'Por favor, complete los datos de domicilio.');
+                        reject('Datos de domicilio incompletos');
+                        return;
+                    }
 
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+                    message += `🚗 ENVÍO A DOMICILIO:\n`;
+                    message += `🏘️ Colonia: ${colonia}\n`;
+                    message += `🛣️ Calle: ${calle}\n`;
+                    message += `🏠 Número exterior: ${numero}\n`;
+                    if (privada) message += `🏘️ Privada: ${privada}\n`;
+                    if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
+                    message += `📱 Teléfono: ${telefono}\n\n`;
+
+                    if (selectedPayment === 'transferencia') {
+                        message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
+                        message += `🏦 Banco: HSBC\n`;
+                        message += `👤 Titular: Alan Stephen Vega Chacon\n`;
+                        message += `💰 Monto a transferir: $${finalTotal} MXN\n\n`;
+                        message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
+                    }
+                } else if (selectedDelivery === 'tienda') {
+                    message += `🏪 RECOGER EN TIENDA:\n\n`;
+                    message += `📍 Dirección del negocio:\n`;
+                    message += `🛣️ Calle: Saavedra\n`;
+                    message += `🏠 Número exterior: 1213\n`;
+                    message += `🏘️ Privada: Benavente\n`;
+                    message += `🔑 Código de acceso: 297822#\n`;
+                    message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
+                    message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
+                }
+
+                message += `🍹✨ ¡Tu jugo, tu estilo, tu fruitbox! ✨🍹`;
+
+                const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
+                window.open(whatsappUrl, '_blank');
+                resolve();
+            });
         }
 
         function showScheduleModalForJuice() {
@@ -810,10 +835,7 @@
                 return;
             }
 
-            let price = juicePrices[currentOrder.juice] || 60;
-            if (currentOrder.size === '24oz') {
-                price += 10;
-            }
+            let price = juicePrices[currentOrder.juice][currentOrder.size];
             if (currentOrder.extras.length > 3) {
                 price += (currentOrder.extras.length - 3) * 5;
             }
@@ -951,16 +973,17 @@
             }, 100);
         }
 
-        function showFinalOrderSummary() {
-            if (!selectedDelivery || !selectedPayment) {
-                 return;
-            }
-
+        function updateOrderSummary() {
             const summary = document.getElementById('order-summary');
             const details = document.getElementById('order-details');
             const totalPrice = document.getElementById('total-price');
             const whatsappBtn = document.getElementById('whatsapp-btn');
             
+            if (!selectedDelivery || !selectedPayment) {
+                 summary.classList.add('hidden');
+                 return;
+            }
+
             let subtotal = cart.reduce((total, item) => total + item.price, 0);
             
             let orderText = `<div class="font-bold mb-2">🛒 Resumen del Carrito (${cart.length} productos)</div>`;
@@ -989,13 +1012,11 @@
             details.innerHTML = orderText;
 
             if (selectedDelivery === 'domicilio') {
-                 // No mostrar total fijo, ya que el costo de envío es variable
                 totalPrice.innerHTML = `Subtotal: $${subtotal} + Envío: Puede variar = Total: Pendiente de confirmación`;
             } else { // 'tienda'
                 totalPrice.innerHTML = `Subtotal: $${subtotal} + Envío: $0 = Total: $${subtotal} MXN`;
             }
 
-            // Lógica para habilitar/deshabilitar el botón de WhatsApp
             const colonia = document.getElementById('colonia').value.trim();
             const calle = document.getElementById('calle').value.trim();
             const numero = document.getElementById('numero').value.trim();
@@ -1014,806 +1035,10 @@
             summary.classList.remove('hidden');
         }
 
-        function checkAndEnableWhatsapp() {
-            showFinalOrderSummary();
-        }
-        
-        function sendWhatsApp() {
-            let message = `🍹 ¡Hola! Quiero hacer un pedido de FruitBox\n\n`;
-            
-            if (cart.length === 0) {
-                showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
-                return;
-            }
-
-            let subtotal = 0;
-            message += `🛒 MI PEDIDO (${cart.length} productos):\n\n`;
-            
-            cart.forEach((item, index) => {
-                subtotal += item.price;
-                message += `${index + 1}. ${item.name}\n`;
-                if (item.customName) {
-                    message += `   ✨ "${item.customName}"\n`;
-                }
-                message += `   📏 Tamaño: ${item.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-                message += `   🥤 Preparación: ${item.preparation}\n`;
-                message += `   🍯 Endulzante: ${item.sweetener}\n`;
-                if (item.extras.length > 0) {
-                    message += `   🌈 Extras: ${item.extras.join(', ')}\n`;
-                }
-                message += `   💰 Precio: $${item.price} MXN\n\n`;
-            });
-            
-            let finalTotal = subtotal;
-            
-            message += `💰 RESUMEN:\n`;
-            message += `   Subtotal: $${subtotal} MXN\n`;
-            
-            if (selectedDelivery === 'domicilio') {
-                message += `   Envío: Puede variar de acuerdo a la ubicación\n`;
-                message += `   🎯 TOTAL: Pendiente de confirmación\n\n`;
-            } else { // 'tienda'
-                message += `   Envío: $0 MXN\n`;
-                message += `   🎯 TOTAL: $${finalTotal} MXN\n\n`;
-            }
-            
-            if (!selectedPayment) {
-                 showModal('⚠️', 'Por favor, selecciona un método de pago.');
-                 return;
-            }
-            message += `💳 Método de pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n\n`;
-            
-            // --- Se ha corregido la lógica para la información de envío. ---
-            if (selectedDelivery === 'domicilio') {
-                const colonia = document.getElementById('colonia').value;
-                const calle = document.getElementById('calle').value;
-                const numero = document.getElementById('numero').value;
-                const privada = document.getElementById('privada').value;
-                const codigo = document.getElementById('codigo').value;
-                const telefono = document.getElementById('telefono').value;
-
-                if (!colonia || !calle || !numero || !telefono) {
-                    showModal('⚠️', 'Por favor, complete los datos de domicilio.');
-                    return;
-                }
-
-                message += `🚗 ENVÍO A DOMICILIO:\n`;
-                message += `🏘️ Colonia: ${colonia}\n`;
-                message += `🛣️ Calle: ${calle}\n`;
-                message += `🏠 Número exterior: ${numero}\n`;
-                if (privada) message += `🏘️ Privada: ${privada}\n`;
-                if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
-                message += `📱 Teléfono: ${telefono}\n\n`;
-
-                if (selectedPayment === 'transferencia') {
-                    message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
-                    message += `🏦 Banco: HSBC\n`;
-                    message += `👤 Titular: Alan Stephen Vega Chacon\n`;
-                    message += `💰 Monto a transferir: $${finalTotal} MXN\n\n`;
-                    message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
-                }
-            } else if (selectedDelivery === 'tienda') { // La lógica de `else if` es más segura
-                message += `🏪 RECOGER EN TIENDA:\n\n`;
-                message += `📍 Dirección del negocio:\n`;
-                message += `🛣️ Calle: Saavedra\n`;
-                message += `🏠 Número exterior: 1213\n`;
-                message += `🏘️ Privada: Benavente\n`;
-                message += `🔑 Código de acceso: 297822#\n`;
-                message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
-                message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-            }
-
-            message += `🍹✨ ¡Tu jugo, tu estilo, tu fruitbox! ✨🍹`;
-
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function showScheduleModalForJuice() {
-            if (!currentOrder.juice || !currentOrder.preparation || !currentOrder.sweetener || !currentOrder.size) {
-                showModal('⚠️', 'Por favor, completa todas las opciones del jugo antes de programar el pedido.');
-                return;
-            }
-            document.getElementById('schedule-modal').classList.remove('hidden');
-        }
-        
-        function hideScheduleModal() {
-            document.getElementById('schedule-modal').classList.add('hidden');
-        }
-        
-        function sendScheduledJuiceWhatsApp() {
-            const scheduleDate = document.getElementById('scheduled-date').value;
-            const scheduleTime = document.getElementById('scheduled-time').value;
-            const scheduleNotes = document.getElementById('scheduled-notes').value.trim();
-            
-            if (!scheduleDate || !scheduleTime) {
-                showModal('⚠️', 'Por favor, selecciona una fecha y hora para programar tu pedido.');
-                return;
-            }
-
-            let price = juicePrices[currentOrder.juice] || 60;
-            if (currentOrder.size === '24oz') {
-                price += 10;
-            }
-            if (currentOrder.extras.length > 3) {
-                price += (currentOrder.extras.length - 3) * 5;
-            }
-
-            let message = `📅 ¡Hola! Me gustaría programar un pedido de FruitBox para el futuro.\n\n`;
-            message += `🗓️ **Fecha Programada:** ${scheduleDate}\n`;
-            message += `⏰ **Hora Programada:** ${scheduleTime}\n\n`;
-            
-            if (scheduleNotes) {
-                message += `📝 **Notas:** ${scheduleNotes}\n\n`;
-            }
-
-            message += `🥤 **DETALLES DEL JUGO:**\n`;
-            message += `   Nombre: ${juiceNames[currentOrder.juice]}\n`;
-            const customName = document.getElementById('custom-name').value.trim();
-            if (currentOrder.juice === 'personalizado' && customName) {
-                message += `   Creación: "${customName}"\n`;
-            }
-            message += `   Tamaño: ${currentOrder.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-            message += `   Preparación: ${currentOrder.preparation}\n`;
-            message += `   Endulzante: ${currentOrder.sweetener}\n`;
-            if (currentOrder.extras.length > 0) {
-                message += `   Extras: ${currentOrder.extras.join(', ')}\n`;
-            }
-            message += `   Precio estimado: $${price} MXN\n\n`;
-
-            message += `🏪 **INFORMACIÓN DE RECOGIDA:**\n`;
-            message += `Recogeré mi pedido en la tienda. Favor de tenerlo listo a la hora indicada.\n`;
-            message += `📍 Dirección: Saavedra 1213, Privada Benavente\n`;
-            message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-
-            message += `🍹✨ ¡Gracias! ✨🍹`;
-
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            hideScheduleModal();
-            resetJuiceSelection();
-        }
-
-        function updateCartDisplay() {
-            document.getElementById('cart-count').textContent = cart.length;
-            
-            const cartItems = document.getElementById('cart-items');
-            const cartSummary = document.getElementById('cart-summary');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><div class="text-4xl mb-2">🛒</div><p>Tu carrito está vacío</p><p class="text-sm">¡Agrega algunos jugos deliciosos!</p></div>';
-                cartSummary.classList.add('hidden');
-            } else {
-                cartSummary.classList.remove('hidden');
-                
-                let cartHTML = '';
-                let subtotal = 0;
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price;
-                    subtotal += itemTotal;
-                    
-                    cartHTML += `
-                        <div class="border-b border-gray-200 pb-4 mb-4 last:border-b-0">
-                            <div class="flex justify-between items-start mb-2">
-                                <div class="flex-1 pr-2">
-                                    <h4 class="font-bold text-gray-800 mb-1">${item.name}</h4>
-                                    ${item.customName ? `<p class="text-xs text-purple-600 italic font-medium mb-1">✨ "${item.customName}"</p>` : ''}
-                                    <div class="text-xs text-gray-600 space-y-1">
-                                        <p>📏 Tamaño: ${item.size === '16oz' ? '16oz (Chico)' : '24oz (Grande)'}</p>
-                                        <p>🥤 Preparación: ${item.preparation}</p>
-                                        <p>🍯 Endulzante: ${item.sweetener}</p>
-                                        ${item.extras.length > 0 ? `<p>🌈 Extras: ${item.extras.join(', ')}</p>` : ''}
-                                    </div>
-                                </div>
-                                <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-sm font-bold min-w-[20px] text-center">1</span>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-bold text-green-600">$${itemTotal}</p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                cartItems.innerHTML = cartHTML;
-                
-                let shippingText = 'Puede variar de acuerdo a la ubicación';
-                let total = subtotal;
-                
-                if (selectedDelivery === 'tienda') {
-                     shippingText = '$0';
-                     total = subtotal;
-                }
-                
-                document.getElementById('cart-subtotal').textContent = `$${subtotal}`;
-                document.getElementById('cart-shipping').innerHTML = shippingText;
-                document.getElementById('cart-total').textContent = `$${total}`;
-            }
-        }
-
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            updateCartCount();
-            updateCartDisplay();
-        }
-
-        function toggleCart() {
-            const cartModal = document.getElementById('cart-modal');
-            cartModal.classList.toggle('hidden');
-            if (!cartModal.classList.contains('hidden')) {
-                updateCartDisplay();
-            }
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
-                return;
-            }
-            toggleCart();
-            document.getElementById('delivery-section').classList.remove('hidden');
-            document.getElementById('payment-section').classList.remove('hidden');
+        window.onload = function() {
+            // Inicializar el resumen de pedido cuando se carga la página para ocultarlo
             document.getElementById('order-summary').classList.add('hidden');
-            setTimeout(() => {
-                const deliverySection = document.getElementById('delivery-section');
-                if (deliverySection) {
-                    deliverySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
-        }
-
-        function showFinalOrderSummary() {
-            if (!selectedDelivery || !selectedPayment) {
-                 return;
-            }
-
-            const summary = document.getElementById('order-summary');
-            const details = document.getElementById('order-details');
-            const totalPrice = document.getElementById('total-price');
-            const whatsappBtn = document.getElementById('whatsapp-btn');
-            
-            let subtotal = cart.reduce((total, item) => total + item.price, 0);
-            
-            let orderText = `<div class="font-bold mb-2">🛒 Resumen del Carrito (${cart.length} productos)</div>`;
-            
-            cart.forEach((item, index) => {
-                orderText += `<div class="text-xs mb-2 bg-white bg-opacity-20 p-2 rounded">`;
-                orderText += `<div class="font-medium">${index + 1}. ${item.name}`;
-                if (item.customName) {
-                    orderText += ` - "${item.customName}"`;
-                }
-                orderText += `</div>`;
-                orderText += `<div>Tamaño: ${item.size === '16oz' ? '16oz (Chico)' : '24oz (Grande)'}</div>`;
-                if (item.extras.length > 0) {
-                    orderText += `<div>Extras: ${item.extras.join(', ')}</div>`;
-                }
-                orderText += `<div>Preparación: ${item.preparation} | Endulzante: ${item.sweetener}</div>`;
-                orderText += `<div class="font-medium">Precio: $${item.price} MXN</div>`;
-                orderText += `</div>`;
-            });
-            
-            orderText += `<div class="mt-2 pt-2 border-t border-white border-opacity-30">`;
-            orderText += `<div>📦 Entrega: ${selectedDelivery === 'tienda' ? 'Recoger en tienda' : 'Envío a domicilio'}</div>`;
-            orderText += `<div>💳 Pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}</div>`;
-            orderText += `</div>`;
-            
-            details.innerHTML = orderText;
-
-            if (selectedDelivery === 'domicilio') {
-                 // No mostrar total fijo, ya que el costo de envío es variable
-                totalPrice.innerHTML = `Subtotal: $${subtotal} + Envío: Puede variar = Total: Pendiente de confirmación`;
-            } else { // 'tienda'
-                totalPrice.innerHTML = `Subtotal: $${subtotal} + Envío: $0 = Total: $${subtotal} MXN`;
-            }
-
-            // Lógica para habilitar/deshabilitar el botón de WhatsApp
-            const colonia = document.getElementById('colonia').value.trim();
-            const calle = document.getElementById('calle').value.trim();
-            const numero = document.getElementById('numero').value.trim();
-            const telefono = document.getElementById('telefono').value.trim();
-
-            if (selectedDelivery === 'domicilio' && (!colonia || !calle || !numero || !telefono)) {
-                whatsappBtn.disabled = true;
-                whatsappBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                whatsappBtn.innerHTML = 'Complete los datos de domicilio';
-            } else {
-                whatsappBtn.disabled = false;
-                whatsappBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                whatsappBtn.innerHTML = 'Enviar Pedido por WhatsApp';
-            }
-
-            summary.classList.remove('hidden');
-        }
-
-        function checkAndEnableWhatsapp() {
-            showFinalOrderSummary();
-        }
-        
-        function sendWhatsApp() {
-            let message = `🍹 ¡Hola! Quiero hacer un pedido de FruitBox\n\n`;
-            
-            if (cart.length === 0) {
-                showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
-                return;
-            }
-
-            let subtotal = 0;
-            message += `🛒 MI PEDIDO (${cart.length} productos):\n\n`;
-            
-            cart.forEach((item, index) => {
-                subtotal += item.price;
-                message += `${index + 1}. ${item.name}\n`;
-                if (item.customName) {
-                    message += `   ✨ "${item.customName}"\n`;
-                }
-                message += `   📏 Tamaño: ${item.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-                message += `   🥤 Preparación: ${item.preparation}\n`;
-                message += `   🍯 Endulzante: ${item.sweetener}\n`;
-                if (item.extras.length > 0) {
-                    message += `   🌈 Extras: ${item.extras.join(', ')}\n`;
-                }
-                message += `   💰 Precio: $${item.price} MXN\n\n`;
-            });
-            
-            let finalTotal = subtotal;
-            
-            message += `💰 RESUMEN:\n`;
-            message += `   Subtotal: $${subtotal} MXN\n`;
-            
-            if (selectedDelivery === 'domicilio') {
-                message += `   Envío: Puede variar de acuerdo a la ubicación\n`;
-                message += `   🎯 TOTAL: Pendiente de confirmación\n\n`;
-            } else { // 'tienda'
-                message += `   Envío: $0 MXN\n`;
-                message += `   🎯 TOTAL: $${finalTotal} MXN\n\n`;
-            }
-            
-            if (!selectedPayment) {
-                 showModal('⚠️', 'Por favor, selecciona un método de pago.');
-                 return;
-            }
-            message += `💳 Método de pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n\n`;
-            
-            if (selectedDelivery === 'domicilio') {
-                const colonia = document.getElementById('colonia').value;
-                const calle = document.getElementById('calle').value;
-                const numero = document.getElementById('numero').value;
-                const privada = document.getElementById('privada').value;
-                const codigo = document.getElementById('codigo').value;
-                const telefono = document.getElementById('telefono').value;
-
-                if (!colonia || !calle || !numero || !telefono) {
-                    showModal('⚠️', 'Por favor, complete los datos de domicilio.');
-                    return;
-                }
-
-                message += `🚗 ENVÍO A DOMICILIO:\n`;
-                message += `🏘️ Colonia: ${colonia}\n`;
-                message += `🛣️ Calle: ${calle}\n`;
-                message += `🏠 Número exterior: ${numero}\n`;
-                if (privada) message += `🏘️ Privada: ${privada}\n`;
-                if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
-                message += `📱 Teléfono: ${telefono}\n\n`;
-
-                if (selectedPayment === 'transferencia') {
-                    message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
-                    message += `🏦 Banco: HSBC\n`;
-                    message += `👤 Titular: Alan Stephen Vega Chacon\n`;
-                    message += `💰 Monto a transferir: $${finalTotal} MXN\n\n`;
-                    message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
-                }
-            } else {
-                message += `🏪 RECOGER EN TIENDA:\n\n`;
-                message += `📍 Dirección del negocio:\n`;
-                message += `🛣️ Calle: Saavedra\n`;
-                message += `🏠 Número exterior: 1213\n`;
-                message += `🏘️ Privada: Benavente\n`;
-                message += `🔑 Código de acceso: 297822#\n`;
-                message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
-                message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-            }
-
-            message += `🍹✨ ¡Tu jugo, tu estilo, tu fruitbox! ✨🍹`;
-
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function showScheduleModalForJuice() {
-            if (!currentOrder.juice || !currentOrder.preparation || !currentOrder.sweetener || !currentOrder.size) {
-                showModal('⚠️', 'Por favor, completa todas las opciones del jugo antes de programar el pedido.');
-                return;
-            }
-            document.getElementById('schedule-modal').classList.remove('hidden');
-        }
-        
-        function hideScheduleModal() {
-            document.getElementById('schedule-modal').classList.add('hidden');
-        }
-        
-        function sendScheduledJuiceWhatsApp() {
-            const scheduleDate = document.getElementById('scheduled-date').value;
-            const scheduleTime = document.getElementById('scheduled-time').value;
-            const scheduleNotes = document.getElementById('scheduled-notes').value.trim();
-            
-            if (!scheduleDate || !scheduleTime) {
-                showModal('⚠️', 'Por favor, selecciona una fecha y hora para programar tu pedido.');
-                return;
-            }
-
-            let price = juicePrices[currentOrder.juice] || 60;
-            if (currentOrder.size === '24oz') {
-                price += 10;
-            }
-            if (currentOrder.extras.length > 3) {
-                price += (currentOrder.extras.length - 3) * 5;
-            }
-
-            let message = `📅 ¡Hola! Me gustaría programar un pedido de FruitBox para el futuro.\n\n`;
-            message += `🗓️ **Fecha Programada:** ${scheduleDate}\n`;
-            message += `⏰ **Hora Programada:** ${scheduleTime}\n\n`;
-            
-            if (scheduleNotes) {
-                message += `📝 **Notas:** ${scheduleNotes}\n\n`;
-            }
-
-            message += `🥤 **DETALLES DEL JUGO:**\n`;
-            message += `   Nombre: ${juiceNames[currentOrder.juice]}\n`;
-            const customName = document.getElementById('custom-name').value.trim();
-            if (currentOrder.juice === 'personalizado' && customName) {
-                message += `   Creación: "${customName}"\n`;
-            }
-            message += `   Tamaño: ${currentOrder.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-            message += `   Preparación: ${currentOrder.preparation}\n`;
-            message += `   Endulzante: ${currentOrder.sweetener}\n`;
-            if (currentOrder.extras.length > 0) {
-                message += `   Extras: ${currentOrder.extras.join(', ')}\n`;
-            }
-            message += `   Precio estimado: $${price} MXN\n\n`;
-
-            message += `🏪 **INFORMACIÓN DE RECOGIDA:**\n`;
-            message += `Recogeré mi pedido en la tienda. Favor de tenerlo listo a la hora indicada.\n`;
-            message += `📍 Dirección: Saavedra 1213, Privada Benavente\n`;
-            message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-
-            message += `🍹✨ ¡Gracias! ✨🍹`;
-
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            hideScheduleModal();
-            resetJuiceSelection();
-        }
-
-        function updateCartDisplay() {
-            document.getElementById('cart-count').textContent = cart.length;
-            
-            const cartItems = document.getElementById('cart-items');
-            const cartSummary = document.getElementById('cart-summary');
-            
-            if (cart.length === 0) {
-                cartItems.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><div class="text-4xl mb-2">🛒</div><p>Tu carrito está vacío</p><p class="text-sm">¡Agrega algunos jugos deliciosos!</p></div>';
-                cartSummary.classList.add('hidden');
-            } else {
-                cartSummary.classList.remove('hidden');
-                
-                let cartHTML = '';
-                let subtotal = 0;
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price;
-                    subtotal += itemTotal;
-                    
-                    cartHTML += `
-                        <div class="border-b border-gray-200 pb-4 mb-4 last:border-b-0">
-                            <div class="flex justify-between items-start mb-2">
-                                <div class="flex-1 pr-2">
-                                    <h4 class="font-bold text-gray-800 mb-1">${item.name}</h4>
-                                    ${item.customName ? `<p class="text-xs text-purple-600 italic font-medium mb-1">✨ "${item.customName}"</p>` : ''}
-                                    <div class="text-xs text-gray-600 space-y-1">
-                                        <p>📏 Tamaño: ${item.size === '16oz' ? '16oz (Chico)' : '24oz (Grande)'}</p>
-                                        <p>🥤 Preparación: ${item.preparation}</p>
-                                        <p>🍯 Endulzante: ${item.sweetener}</p>
-                                        ${item.extras.length > 0 ? `<p>🌈 Extras: ${item.extras.join(', ')}</p>` : ''}
-                                    </div>
-                                </div>
-                                <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 p-1">
-                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-sm font-bold min-w-[20px] text-center">1</span>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-bold text-green-600">$${itemTotal}</p>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-                
-                cartItems.innerHTML = cartHTML;
-                
-                let shippingText = 'Puede variar de acuerdo a la ubicación';
-                let total = subtotal;
-                
-                if (selectedDelivery === 'tienda') {
-                     shippingText = '$0';
-                     total = subtotal;
-                }
-                
-                document.getElementById('cart-subtotal').textContent = `$${subtotal}`;
-                document.getElementById('cart-shipping').innerHTML = shippingText;
-                document.getElementById('cart-total').textContent = `$${total}`;
-            }
-        }
-
-        function removeFromCart(itemId) {
-            cart = cart.filter(item => item.id !== itemId);
-            updateCartCount();
-            updateCartDisplay();
-        }
-
-        function toggleCart() {
-            const cartModal = document.getElementById('cart-modal');
-            cartModal.classList.toggle('hidden');
-            if (!cartModal.classList.contains('hidden')) {
-                updateCartDisplay();
-            }
-        }
-
-        function proceedToCheckout() {
-            if (cart.length === 0) {
-                showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
-                return;
-            }
-            toggleCart();
-            document.getElementById('delivery-section').classList.remove('hidden');
-            document.getElementById('payment-section').classList.remove('hidden');
-            document.getElementById('order-summary').classList.add('hidden');
-            setTimeout(() => {
-                const deliverySection = document.getElementById('delivery-section');
-                if (deliverySection) {
-                    deliverySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 100);
-        }
-
-        function showFinalOrderSummary() {
-            if (!selectedDelivery || !selectedPayment) {
-                 return;
-            }
-
-            const summary = document.getElementById('order-summary');
-            const details = document.getElementById('order-details');
-            const totalPrice = document.getElementById('total-price');
-            const whatsappBtn = document.getElementById('whatsapp-btn');
-            
-            let subtotal = cart.reduce((total, item) => total + item.price, 0);
-            
-            let orderText = `<div class="font-bold mb-2">🛒 Resumen del Carrito (${cart.length} productos)</div>`;
-            
-            cart.forEach((item, index) => {
-                orderText += `<div class="text-xs mb-2 bg-white bg-opacity-20 p-2 rounded">`;
-                orderText += `<div class="font-medium">${index + 1}. ${item.name}`;
-                if (item.customName) {
-                    orderText += ` - "${item.customName}"`;
-                }
-                orderText += `</div>`;
-                orderText += `<div>Tamaño: ${item.size === '16oz' ? '16oz (Chico)' : '24oz (Grande)'}</div>`;
-                if (item.extras.length > 0) {
-                    orderText += `<div>Extras: ${item.extras.join(', ')}</div>`;
-                }
-                orderText += `<div>Preparación: ${item.preparation} | Endulzante: ${item.sweetener}</div>`;
-                orderText += `<div class="font-medium">Precio: $${item.price} MXN</div>`;
-                orderText += `</div>`;
-            });
-            
-            orderText += `<div class="mt-2 pt-2 border-t border-white border-opacity-30">`;
-            orderText += `<div>📦 Entrega: ${selectedDelivery === 'tienda' ? 'Recoger en tienda' : 'Envío a domicilio'}</div>`;
-            orderText += `<div>💳 Pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}</div>`;
-            orderText += `</div>`;
-            
-            details.innerHTML = orderText;
-
-            if (selectedDelivery === 'domicilio') {
-                 // No mostrar total fijo, ya que el costo de envío es variable
-                totalPrice.innerHTML = `Subtotal: $${subtotal} + Envío: Puede variar = Total: Pendiente de confirmación`;
-            } else { // 'tienda'
-                totalPrice.innerHTML = `Subtotal: $${subtotal} + Envío: $0 = Total: $${subtotal} MXN`;
-            }
-
-            // Lógica para habilitar/deshabilitar el botón de WhatsApp
-            const colonia = document.getElementById('colonia').value.trim();
-            const calle = document.getElementById('calle').value.trim();
-            const numero = document.getElementById('numero').value.trim();
-            const telefono = document.getElementById('telefono').value.trim();
-
-            if (selectedDelivery === 'domicilio' && (!colonia || !calle || !numero || !telefono)) {
-                whatsappBtn.disabled = true;
-                whatsappBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                whatsappBtn.innerHTML = 'Complete los datos de domicilio';
-            } else {
-                whatsappBtn.disabled = false;
-                whatsappBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                whatsappBtn.innerHTML = 'Enviar Pedido por WhatsApp';
-            }
-
-            summary.classList.remove('hidden');
-        }
-
-        function checkAndEnableWhatsapp() {
-            showFinalOrderSummary();
-        }
-        
-        function sendWhatsApp() {
-            let message = `🍹 ¡Hola! Quiero hacer un pedido de FruitBox\n\n`;
-            
-            if (cart.length === 0) {
-                showModal('⚠️', 'Tu carrito está vacío. Por favor, agrega un jugo para continuar.');
-                return;
-            }
-
-            let subtotal = 0;
-            message += `🛒 MI PEDIDO (${cart.length} productos):\n\n`;
-            
-            cart.forEach((item, index) => {
-                subtotal += item.price;
-                message += `${index + 1}. ${item.name}\n`;
-                if (item.customName) {
-                    message += `   ✨ "${item.customName}"\n`;
-                }
-                message += `   📏 Tamaño: ${item.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-                message += `   🥤 Preparación: ${item.preparation}\n`;
-                message += `   🍯 Endulzante: ${item.sweetener}\n`;
-                if (item.extras.length > 0) {
-                    message += `   🌈 Extras: ${item.extras.join(', ')}\n`;
-                }
-                message += `   💰 Precio: $${item.price} MXN\n\n`;
-            });
-            
-            let finalTotal = subtotal;
-            
-            message += `💰 RESUMEN:\n`;
-            message += `   Subtotal: $${subtotal} MXN\n`;
-            
-            if (selectedDelivery === 'domicilio') {
-                message += `   Envío: Puede variar de acuerdo a la ubicación\n`;
-                message += `   🎯 TOTAL: Pendiente de confirmación\n\n`;
-            } else { // 'tienda'
-                message += `   Envío: $0 MXN\n`;
-                message += `   🎯 TOTAL: $${finalTotal} MXN\n\n`;
-            }
-            
-            if (!selectedPayment) {
-                 showModal('⚠️', 'Por favor, selecciona un método de pago.');
-                 return;
-            }
-            message += `💳 Método de pago: ${selectedPayment === 'efectivo' ? 'Efectivo' : 'Transferencia HSBC'}\n\n`;
-            
-            if (selectedDelivery === 'domicilio') {
-                const colonia = document.getElementById('colonia').value;
-                const calle = document.getElementById('calle').value;
-                const numero = document.getElementById('numero').value;
-                const privada = document.getElementById('privada').value;
-                const codigo = document.getElementById('codigo').value;
-                const telefono = document.getElementById('telefono').value;
-
-                if (!colonia || !calle || !numero || !telefono) {
-                    showModal('⚠️', 'Por favor, complete los datos de domicilio.');
-                    return;
-                }
-
-                message += `🚗 ENVÍO A DOMICILIO:\n`;
-                message += `🏘️ Colonia: ${colonia}\n`;
-                message += `🛣️ Calle: ${calle}\n`;
-                message += `🏠 Número exterior: ${numero}\n`;
-                if (privada) message += `🏘️ Privada: ${privada}\n`;
-                if (codigo) message += `🔑 Código de acceso: ${codigo}\n`;
-                message += `📱 Teléfono: ${telefono}\n\n`;
-
-                if (selectedPayment === 'transferencia') {
-                    message += `💳 INFORMACIÓN PARA TRANSFERENCIA:\n`;
-                    message += `🏦 Banco: HSBC\n`;
-                    message += `👤 Titular: Alan Stephen Vega Chacon\n`;
-                    message += `💰 Monto a transferir: $${finalTotal} MXN\n\n`;
-                    message += `📄 Por favor envía el comprobante de transferencia para confirmar tu pedido.\n\n`;
-                }
-            } else if (selectedDelivery === 'tienda') {
-                message += `🏪 RECOGER EN TIENDA:\n\n`;
-                message += `📍 Dirección del negocio:\n`;
-                message += `🛣️ Calle: Saavedra\n`;
-                message += `🏠 Número exterior: 1213\n`;
-                message += `🏘️ Privada: Benavente\n`;
-                message += `🔑 Código de acceso: 297822#\n`;
-                message += `🏡 Detalles: Casa café con blanco cerco de malla\n\n`;
-                message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-            }
-
-            message += `🍹✨ ¡Tu jugo, tu estilo, tu fruitbox! ✨🍹`;
-
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-
-        function showScheduleModalForJuice() {
-            if (!currentOrder.juice || !currentOrder.preparation || !currentOrder.sweetener || !currentOrder.size) {
-                showModal('⚠️', 'Por favor, completa todas las opciones del jugo antes de programar el pedido.');
-                return;
-            }
-            document.getElementById('schedule-modal').classList.remove('hidden');
-        }
-        
-        function hideScheduleModal() {
-            document.getElementById('schedule-modal').classList.add('hidden');
-        }
-        
-        function sendScheduledJuiceWhatsApp() {
-            const scheduleDate = document.getElementById('scheduled-date').value;
-            const scheduleTime = document.getElementById('scheduled-time').value;
-            const scheduleNotes = document.getElementById('scheduled-notes').value.trim();
-            
-            if (!scheduleDate || !scheduleTime) {
-                showModal('⚠️', 'Por favor, selecciona una fecha y hora para programar tu pedido.');
-                return;
-            }
-
-            let price = juicePrices[currentOrder.juice] || 60;
-            if (currentOrder.size === '24oz') {
-                price += 10;
-            }
-            if (currentOrder.extras.length > 3) {
-                price += (currentOrder.extras.length - 3) * 5;
-            }
-
-            let message = `📅 ¡Hola! Me gustaría programar un pedido de FruitBox para el futuro.\n\n`;
-            message += `🗓️ **Fecha Programada:** ${scheduleDate}\n`;
-            message += `⏰ **Hora Programada:** ${scheduleTime}\n\n`;
-            
-            if (scheduleNotes) {
-                message += `📝 **Notas:** ${scheduleNotes}\n\n`;
-            }
-
-            message += `🥤 **DETALLES DEL JUGO:**\n`;
-            message += `   Nombre: ${juiceNames[currentOrder.juice]}\n`;
-            const customName = document.getElementById('custom-name').value.trim();
-            if (currentOrder.juice === 'personalizado' && customName) {
-                message += `   Creación: "${customName}"\n`;
-            }
-            message += `   Tamaño: ${currentOrder.size === '16oz' ? '16 oz (Chico)' : '24 oz (Grande)'}\n`;
-            message += `   Preparación: ${currentOrder.preparation}\n`;
-            message += `   Endulzante: ${currentOrder.sweetener}\n`;
-            if (currentOrder.extras.length > 0) {
-                message += `   Extras: ${currentOrder.extras.join(', ')}\n`;
-            }
-            message += `   Precio estimado: $${price} MXN\n\n`;
-
-            message += `🏪 **INFORMACIÓN DE RECOGIDA:**\n`;
-            message += `Recogeré mi pedido en la tienda. Favor de tenerlo listo a la hora indicada.\n`;
-            message += `📍 Dirección: Saavedra 1213, Privada Benavente\n`;
-            message += `⚠️ Nota: No olvide mostrar una identificación oficial para su ingreso.\n\n`;
-
-            message += `🍹✨ ¡Gracias! ✨🍹`;
-
-            const whatsappUrl = `https://wa.me/526862442310?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            hideScheduleModal();
-            resetJuiceSelection();
-        }
+        };
     </script>
 </body>
 </html>
